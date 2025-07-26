@@ -1,8 +1,10 @@
 __pycache__/
 **/__pycache__/
 
-dataset/
-images/
+datasets/
 utils/urban_areas/
 
 keys.py
+
+*.gz
+

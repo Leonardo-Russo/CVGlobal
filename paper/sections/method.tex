@@ -1,0 +1,125 @@
+We propose CroDINO, a novel approach for cross-view orientation estimation that leverages the robust feature representations of DINOv2 with orientation-aware token aggregation strategies. Our method addresses the fundamental challenge of aligning ground-level panoramic images with aerial satellite views by exploiting both spatial structure and depth information.
+
+\subsection{Problem Formulation}
+
+Given a ground-level panoramic image $I_g$ and an aerial satellite image $I_a$ of the same geographic location, our goal is to estimate the relative orientation $\theta$ between the two views. The ground image is extracted from a 360° panorama using a field-of-view (FOV) window defined by parameters $(f_x, f_y, \psi, \phi)$, where $f_x$ and $f_y$ represent the horizontal and vertical FOV angles, $\psi$ is the yaw (rotation around the vertical axis), and $\phi$ is the pitch (elevation angle).
+
+\subsection{Architecture Overview}
+
+\subsubsection{Dual-Stream Feature Extraction}
+
+CroDINO builds upon the DINOv2 Vision Transformer architecture, which provides rich, self-supervised feature representations. We modify the standard DINOv2 model to process both ground and aerial images simultaneously while maintaining separate positional embeddings and class tokens for each modality.
+
+The model consists of:
+\begin{itemize}
+    \item \textbf{Shared Backbone}: We utilize the pre-trained DINOv2-ViT-B/14 as our feature extractor, freezing its parameters to preserve the learned representations.
+    \item \textbf{Dual Positional Embeddings}: Separate positional embeddings $\mathbf{E}_{pos}^g$ and $\mathbf{E}_{pos}^a$ for ground and aerial images to account for their different spatial characteristics.
+    \item \textbf{Cross-Modal Attention}: A final single-head attention layer that enables interaction between ground and aerial features.
+\end{itemize}
+
+\subsubsection{Token Processing Pipeline}
+
+For each input image pair, the model generates patch embeddings of size $14 \times 14$ pixels, resulting in a $16 \times 16$ grid of 768-dimensional feature vectors. The forward pass can be formulated as:
+
+\begin{align}
+\mathbf{F}_g &= \text{DINOv2}(I_g; \mathbf{E}_{pos}^g) \\
+\mathbf{F}_a &= \text{DINOv2}(I_a; \mathbf{E}_{pos}^a) \\
+\mathbf{F}_{combined} &= \text{Attention}([\mathbf{F}_g; \mathbf{F}_a])
+\end{align}
+
+where $\mathbf{F}_g, \mathbf{F}_a \in \mathbb{R}^{16 \times 16 \times 768}$ are the ground and aerial feature matrices, respectively.
+
+\subsection{Orientation-Aware Token Aggregation}
+
+\subsubsection{Sky Filtering and Depth Estimation}
+
+To improve orientation estimation, we incorporate semantic and geometric priors:
+
+\textbf{Sky Segmentation}: We employ a lightweight CNN-based sky filter to identify and mask sky regions in ground images. The sky mask $M_{sky}$ is computed at the patch level using majority voting within each $16 \times 16$ grid cell.
+
+\textbf{Depth Estimation}: We utilize the Depth-Anything model to generate depth maps $D$ for ground images. The depth information is downsampled to match the patch grid, providing depth values $d_{i,j}$ for each spatial location $(i,j)$.
+
+\subsubsection{Multi-Layer Token Aggregation}
+
+We introduce a novel aggregation strategy that separates tokens into three depth layers: foreground, middleground, and background. This approach captures the multi-scale nature of visual features in cross-view matching.
+
+\textbf{Vertical Column Analysis}: For each vertical column $j$ in the ground image feature grid, we compute depth-weighted averages:
+
+\begin{align}
+\mathbf{t}_j^{fore} &= \frac{\sum_{i} w_i^{fore} \cdot \mathbf{f}_{i,j}^g \cdot M_{sky}(i,j)}{\sum_{i} w_i^{fore} \cdot M_{sky}(i,j)} \\
+\mathbf{t}_j^{mid} &= \frac{\sum_{i} w_i^{mid} \cdot \mathbf{f}_{i,j}^g \cdot M_{sky}(i,j)}{\sum_{i} w_i^{mid} \cdot M_{sky}(i,j)} \\
+\mathbf{t}_j^{back} &= \frac{\sum_{i} w_i^{back} \cdot \mathbf{f}_{i,j}^g \cdot M_{sky}(i,j)}{\sum_{i} w_i^{back} \cdot M_{sky}(i,j)}
+\end{align}
+
+where the depth-dependent weights are defined as:
+\begin{align}
+w_i^{fore} &= d_{i,j} \\
+w_i^{mid} &= \begin{cases} 
+\frac{d_{i,j}}{\tau} & \text{if } d_{i,j} \leq 0.5 \\
+\frac{1-d_{i,j}}{d_{i,j}} & \text{otherwise}
+\end{cases} \\
+w_i^{back} &= 1 - d_{i,j}
+\end{align}
+
+with threshold $\tau = 0.5$.
+
+\textbf{Radial Direction Analysis}: For aerial images, we extract features along radial directions from the center:
+
+\begin{align}
+\mathbf{r}_\beta^{fore} &= \frac{\sum_{r} w_r^{fore} \cdot \mathbf{f}_{\beta,r}^a}{\sum_{r} w_r^{fore}} \\
+\mathbf{r}_\beta^{mid} &= \frac{\sum_{r} w_r^{mid} \cdot \mathbf{f}_{\beta,r}^a}{\sum_{r} w_r^{mid}} \\
+\mathbf{r}_\beta^{back} &= \frac{\sum_{r} w_r^{back} \cdot \mathbf{f}_{\beta,r}^a}{\sum_{r} w_r^{back}}
+\end{align}
+
+where $\beta$ represents the angle direction, $r$ is the radial distance, and the weights follow a linear progression: $w_r^{fore} = 1-r/R$, $w_r^{mid}$ follows a triangular pattern, and $w_r^{back} = r/R$.
+
+\subsection{Orientation Estimation}
+
+\subsubsection{Cross-Modal Alignment}
+
+We estimate orientation by finding the angular offset that minimizes the cosine distance between corresponding vertical and radial feature aggregations. For each candidate orientation $\theta$, we compute:
+
+\begin{align}
+\mathcal{L}(\theta) = \frac{1}{N} \sum_{i=0}^{N-1} \left\| 1 - \begin{bmatrix} \mathbf{t}_{N-1-i}^{fore} \\ \mathbf{t}_{N-1-i}^{mid} \\ \mathbf{t}_{N-1-i}^{back} \end{bmatrix}^T \begin{bmatrix} \mathbf{r}_{\phi(\theta,i)}^{fore} \\ \mathbf{r}_{\phi(\theta,i)}^{mid} \\ \mathbf{r}_{\phi(\theta,i)}^{back} \end{bmatrix} \right\|
+\end{align}
+
+where $\phi(\theta,i) = (\lfloor\theta/\Delta\theta\rfloor + i - N/2) \bmod |\mathcal{R}|$ maps vertical columns to radial directions, and $\Delta\theta$ is the angular step size.
+
+\subsubsection{Confidence Estimation}
+
+To assess the reliability of orientation estimates, we compute a confidence score based on the Z-score of the minimum distance:
+
+\begin{align}
+\text{confidence} = \frac{\mu(\mathcal{L}) - \min(\mathcal{L})}{\sigma(\mathcal{L})}
+\end{align}
+
+where $\mu(\mathcal{L})$ and $\sigma(\mathcal{L})$ are the mean and standard deviation of the loss values across all candidate orientations.
+
+\subsection{Training Strategy}
+
+Our approach operates in a largely unsupervised manner, leveraging the pre-trained DINOv2 features without requiring orientation labels during training. The model learns to align cross-view features through the geometric constraints imposed by the aggregation strategy and the cosine similarity objective.
+
+\subsubsection{Data Preprocessing}
+
+We extract random FOV windows from panoramic images with parameters:
+\begin{itemize}
+    \item Horizontal FOV: $90^\circ$
+    \item Vertical FOV: $180^\circ$ 
+    \item Random yaw: $\psi \sim \text{Uniform}(0^\circ, 360^\circ)$
+    \item Fixed pitch: $\phi = 90^\circ$
+\end{itemize}
+
+Aerial images undergo center cropping and optional polar transformation to align with the ground view geometry.
+
+\subsection{Implementation Details}
+
+The complete pipeline processes image pairs through the following stages:
+\begin{enumerate}
+    \item Feature extraction using frozen DINOv2-ViT-B/14
+    \item Sky segmentation using guided filter refinement
+    \item Depth estimation with Depth-Anything model
+    \item Multi-layer token aggregation with depth weighting
+    \item Cross-modal orientation search with cosine similarity
+\end{enumerate}
+
+All models are implemented in PyTorch and can operate on both CPU and GPU. The orientation search space is discretized with angular steps of $\Delta\theta = 90\textdegree/16 = 5.625\textdegree$ for a $16 \times 16$ patch grid.

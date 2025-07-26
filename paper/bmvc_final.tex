@@ -1,0 +1,66 @@
+\documentclass{bmvc2k}
+
+%% Enter your paper number here for the review copy
+% \bmvcreviewcopy{??}
+
+\title{CVGlobal}
+
+% Enter the paper's authors in order
+\addauthor{Leonardo Ruso}{leonardo.russo@inria.fr}{1}
+\addauthor{Diego Marcos}{diego.marcos@inria.fr}{1}
+
+% Enter the institutions
+% \addinstitution{Name\\Address}
+\addinstitution{
+ INRIA\\
+ Evergreen Team\\
+ Montpellier, France
+}
+
+\runninghead{Russo, Marcos}{CVGlobal}
+
+% Any macro definitions you would like to include
+% These are not defined in the style file, because they don't begin
+% with \bmva, so they might conflict with the user's own macros.
+% The \bmvaOneDot macro adds a full stop unless there is one in the
+% text already.
+\def\eg{\emph{e.g}\bmvaOneDot}
+\def\Eg{\emph{E.g}\bmvaOneDot}
+\def\etal{\emph{et al}\bmvaOneDot}
+
+%------------------------------------------------------------------------- 
+% Document starts here
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This document demonstrates the format requirements for papers submitted
+to the British Machine Vision Conference.  The format is designed for
+easy on-screen reading, and to print well at one or two pages per sheet.
+Additional features include: pop-up annotations for
+citations~\cite{Authors06,Mermin89}; a margin ruler for reviewing; and a
+greatly simplified way of entering multiple authors and institutions.
+
+{\bf All authors are encouraged to read this document}, even if you have
+written many papers before.  As well as a description of the format, the
+document contains many instructions relating to formatting problems and
+errors that are common even in the work of authors who {\em have}
+written many papers before.
+\end{abstract}
+
+%------------------------------------------------------------------------- 
+\section{Introduction}
+\label{sec:intro}
+\input{sections/intro.tex}
+
+\section{Dataset Generation Method}
+\label{sec:dataset_generation}
+\input{sections/dataset_generation}
+
+\section{CroDino Method}
+\label{sec:method}
+\input{sections/method}
+
+\bibliography{egbib}
+\end{document}

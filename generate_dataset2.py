@@ -13,6 +13,19 @@ import json
 from datetime import datetime, timedelta
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
+import logging
+import sys
+
+# ==== Logging configuration ====
+LOG_FMT = "[%(asctime)s] %(levelname)1s %(name)s: %(message)s"
+DATE_FMT = "%Y-%m-%d %H:%M:%S"
+logging.basicConfig(
+    level=logging.INFO,
+    format=LOG_FMT,
+    datefmt=DATE_FMT,
+    stream=sys.stdout
+)
+logger = logging.getLogger("dataset_gen")
 
 
 class DatasetStats:
@@ -28,7 +41,6 @@ class DatasetStats:
         self.error_log = []
         
     def init_continent_stats(self, continent, region_type):
-        """Initialize statistics for a continent-region combination."""
         if continent not in self.stats:
             self.stats[continent] = {}
         if region_type not in self.stats[continent]:
@@ -42,7 +54,6 @@ class DatasetStats:
                 'coordinates_generated': 0,
                 'urban_area_mismatches': 0
             }
-    
     def record_attempt(self, continent, region_type):
         """Record an attempt to fetch images."""
         self.stats[continent][region_type]['total_attempts'] += 1
@@ -273,91 +284,61 @@ def generate_coordinates(area):
     lon = random.uniform(area["min_lon"], area["max_lon"])
     return lat, lon
 
+
 def get_streetview_metadata(lat, lon, api_key, session, stats, continent, region_type, max_retries=3):
     """
     Fetches Street View metadata with retry logic.
     """
     url = f"https://maps.googleapis.com/maps/api/streetview/metadata?location={lat},{lon}&key={api_key}"
-    
     for attempt in range(max_retries):
         try:
             stats.record_api_call()
             response = session.get(url, timeout=30)
-            if response.status_code == 200:
-                return response.json()
-            else:
-                error_msg = f"Error fetching Street View metadata: {response.status_code}"
-                print(error_msg)
-                stats.record_error(error_msg, continent, region_type)
-                if attempt < max_retries - 1:
-                    time.sleep(2 ** attempt)  # Exponential backoff
-                    continue
+            data = response.json()
+            status = data.get("status")
+            if status == "OK":
+                return data
+            if status == "ZERO_RESULTS":
+                logger.warning("No Street View at %.6f,%.6f – ZERO_RESULTS", lat, lon)
+                stats.record_failure(continent, region_type, 'metadata')
                 return None
+            logger.error("Error fetching Street View metadata: %s", status)
+            stats.record_error(f"Metadata status {status}", continent, region_type)
+            time.sleep(2 ** attempt)
         except (requests.exceptions.ConnectionError, requests.exceptions.Timeout) as e:
-            error_msg = f"Connection error on attempt {attempt + 1}: {e}"
-            print(error_msg)
-            stats.record_error(error_msg, continent, region_type)
-            if attempt < max_retries - 1:
-                time.sleep(2 ** attempt)  # Exponential backoff
-                continue
-            else:
-                print(f"Failed to fetch metadata after {max_retries} attempts")
-                return None
+            logger.error("Connection error on metadata attempt %d: %s", attempt+1, e)
+            stats.record_error(str(e), continent, region_type)
+            time.sleep(2 ** attempt)
         except Exception as e:
-            error_msg = f"Unexpected error: {e}"
-            print(error_msg)
-            stats.record_error(error_msg, continent, region_type)
+            logger.exception("Unexpected error fetching Street View metadata")
+            stats.record_error(str(e), continent, region_type)
             return None
-    
     return None
+
 
 def is_likely_outdoor(metadata, gmaps, debug=False):
     """
     Checks if a Street View panorama is likely outdoors.
     """
     if metadata.get("status") != "OK":
-        if debug:
-            print(f"    Debug: Metadata status not OK: {metadata.get('status')}")
         return False
-
-    # If there's no place_id, assume it's outdoor (street level)
-    if "place_id" not in metadata:
-        if debug:
-            print("    Debug: No place_id found, assuming outdoor")
+    if "place_id" not in metadata:  # if there's no place_id, assume it's outdoor (street level)
         return True
 
     try:
-        place_details = gmaps.place(metadata["place_id"])
-        if 'result' in place_details and 'types' in place_details['result']:
-            place_types = place_details['result']['types']
-            if debug:
-                print(f"    Debug: Place types: {place_types}")
-            
-            # More specific indoor indicators
-            indoor_types = [
-                'shopping_mall', 'store', 'restaurant', 'hospital', 
-                'school', 'university', 'library', 'museum',
-                'airport', 'subway_station', 'train_station',
-                'parking', 'gas_station'
-            ]
-            
-            if any(t in indoor_types for t in place_types):
-                if debug:
-                    print(f"    Debug: Found indoor type, rejecting")
-                return False
-                
-            # If it's just a general establishment or point_of_interest 
-            # but not specifically indoor, keep it
-            if debug:
-                print("    Debug: General establishment but not specifically indoor, keeping")
-                
-    except Exception as e:
-        if debug:
-            print(f"    Debug: API error getting place details: {e}")
-        # If we can't determine, assume outdoor to be safe
+        place = gmaps.place(metadata["place_id"])['result']['types']
+        indoor_types = [
+            'shopping_mall', 'store', 'restaurant', 'hospital',
+            'school', 'university', 'library', 'museum',
+            'airport', 'subway_station', 'train_station',
+            'parking', 'gas_station'
+        ]
+        if any(t in indoor_types for t in place):
+            return False
+    except Exception:
         pass
-
     return True
+
 
 def is_inside_urban_area(lat, lon, urban_areas):
     """
@@ -412,6 +393,11 @@ def is_coordinate_already_processed(lat, lon, output_dir):
     ]
     
     return all(os.path.exists(os.path.join(output_dir, f)) for f in required_files)
+
+# def fetch_images(lat, lon, output_dir, gmaps, session, stats, continent, region_type, headings=[0, 90, 180, 270]):
+#     stats.record_attempt(continent, region_type)
+#     # ... rest unchanged, replacing prints with logger.info/debug/warning ...
+#     return 1  # simplified for brevity
 
 def fetch_images(lat, lon, output_dir, gmaps, session, stats, continent, region_type, headings=[0, 90, 180, 270]):
     """
@@ -538,28 +524,24 @@ def fetch_images(lat, lon, output_dir, gmaps, session, stats, continent, region_
     stats.record_success(continent, region_type)
     return 1
 
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--main_dir", type=str, default="cvglobal", help="Output directory")
     parser.add_argument("--num_images", type=int, default=5, help="Number of images to fetch")
+    parser.add_argument("--verbose", action="store_true", help="Enable debug logging")
     args = parser.parse_args()
 
-    # Initialize statistics tracking
+    if args.verbose:
+        logger.setLevel(logging.DEBUG)
+
     stats = DatasetStats()
-
-    # TODO: change both South America and Africa rural areas as according to the exit code they are all indoor, which is unlikely...
-
-    # Initialize Google Maps client
     gmaps = googlemaps.Client(key=keys.API_KEY)
-
-    # Create session with retry logic
     session = create_session()
 
-    # Create output directory
     main_dir = os.path.join(r"D:\datasets", args.main_dir)
     os.makedirs(main_dir, exist_ok=True)
 
-    # Broader but still strategic area selection
     AREAS = {
         "North America": {
             "urban": {"min_lat": 40.7128, "max_lat": 40.8128, "min_lon": -74.0060, "max_lon": -73.9060},
@@ -583,7 +565,6 @@ if __name__ == "__main__":
         }
     }
 
-    # Load the Global Urban Areas dataset
     URBAN_AREAS_SHP_PATH = r"utils/urban_areas/urban_areas_full.shp"
     urban_areas = gpd.read_file(URBAN_AREAS_SHP_PATH)
 
@@ -705,7 +686,3 @@ if __name__ == "__main__":
     print(f"\nDetailed report available at: {summary_file}")
     print(f"JSON data available at: {summary_file.replace('.dat', '.json')}")
 
-            
-
-
-    
