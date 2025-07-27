@@ -1,0 +1,48 @@
+
+\subsection{Cross-View Geo-localization}
+
+Cross-view geo-localization has emerged as a fundamental computer vision task that addresses the challenge of matching images captured from different viewpoints of the same geographic location. Early works in this domain primarily focused on matching ground-level street-view images with aerial or satellite imagery~\cite{workman2015predicting,lin2013cross}. These pioneering approaches established the foundation for understanding the geometric and semantic relationships between cross-view image pairs.
+
+Recent advances have leveraged deep learning architectures to learn robust cross-view representations. Hu et al.~\cite{hu2018cvm} introduced the Cross-View Matching Network (CVM-Net), which uses a dual-stream CNN architecture with polar transform to align aerial and ground images. Building upon this foundation, Shi et al.~\cite{shi2019spatial} proposed spatial-aware feature aggregation to capture local spatial relationships, while Regmi and Borji~\cite{regmi2018cross} developed a comprehensive review highlighting the key challenges in cross-view matching.
+
+The VIGOR dataset~\cite{zhu2021vigor} represents a significant milestone in cross-view research, providing same-area and cross-area evaluation protocols that better reflect real-world deployment scenarios. This dataset has become a standard benchmark for evaluating cross-view geo-localization methods, offering panoramic ground images paired with aerial satellite views across multiple cities.
+
+\subsection{Vision Transformers in Cross-View Tasks}
+
+The advent of Vision Transformers (ViTs)~\cite{dosovitskiy2020image} has revolutionized computer vision, including cross-view geo-localization. Unlike CNNs, ViTs can capture long-range dependencies through self-attention mechanisms, making them particularly suitable for understanding global spatial relationships in cross-view scenarios.
+
+Several recent works have explored ViT-based architectures for cross-view matching. Zhu et al.~\cite{zhu2023vigor} investigated the application of standard ViTs to cross-view tasks, demonstrating improved performance over CNN-based methods. Toker et al.~\cite{toker2021coming} showed that transformer architectures can effectively handle the viewpoint variations inherent in cross-view matching problems.
+
+However, these approaches primarily rely on supervised learning with orientation labels, requiring extensive annotation efforts. Our work distinguishes itself by leveraging pre-trained features from self-supervised models, reducing the dependency on labeled orientation data.
+
+\subsection{Self-Supervised Visual Representation Learning}
+
+Self-supervised learning has gained significant traction as a paradigm for learning robust visual representations without manual annotations. Methods like MoCo~\cite{he2020momentum}, SimCLR~\cite{chen2020simple}, and BYOL~\cite{grill2020bootstrap} have demonstrated that self-supervised features can match or exceed supervised counterparts on various downstream tasks.
+
+DINOv2~\cite{oquab2023dinov2} represents the state-of-the-art in self-supervised vision models, combining the discriminative power of ViTs with robust pre-training on large-scale image collections. Unlike its predecessor DINO~\cite{caron2021emerging}, DINOv2 provides features that are particularly well-suited for dense prediction tasks and fine-grained visual understanding.
+
+Recent works have begun exploring the application of self-supervised features to geo-localization tasks. However, these approaches typically treat cross-view matching as a standard retrieval problem without considering the specific geometric constraints and orientation relationships inherent in cross-view scenarios.
+
+\subsection{Orientation Estimation and Spatial Alignment}
+
+Orientation estimation in cross-view scenarios has been addressed through various approaches. Traditional methods relied on handcrafted features and geometric constraints~\cite{bansal2011ultra,lin2015learning}. Recent deep learning approaches have explored end-to-end orientation regression~\cite{workman2015predicting} and attention-based alignment mechanisms~\cite{shi2020where}.
+
+Attention mechanisms have proven particularly effective for cross-view alignment. Cross-attention layers can learn to focus on corresponding regions between aerial and ground views, enabling more accurate spatial correspondence. However, most existing attention-based methods require supervised training with orientation labels.
+
+Our approach introduces novel orientation-aware token aggregation strategies that exploit the inherent spatial structure of transformer features. By aggregating tokens along meaningful directions (vertical columns for ground images and radial directions for aerial images), we can estimate orientation through unsupervised feature alignment.
+
+\subsection{Sky Segmentation and Depth Estimation}
+
+Incorporating semantic and geometric priors has shown promise in improving cross-view matching performance. Sky segmentation helps eliminate uninformative regions in ground-level images, focusing attention on building structures and terrain features that are visible in aerial views~\cite{workman2015predicting}.
+
+Recent advances in monocular depth estimation, particularly with models like Depth-Anything~\cite{yang2024depth}, provide robust depth cues that can inform cross-view alignment. Depth information enables multi-scale feature aggregation, where closer objects receive different weighting compared to distant features.
+
+Our work is the first to systematically combine sky filtering, depth estimation, and self-supervised feature learning in a unified framework for cross-view orientation estimation. The integration of these complementary signals enables more robust and accurate orientation prediction.
+
+\subsection{Benchmark Datasets}
+
+Several datasets have been developed to support cross-view geo-localization research. The CVUSA dataset~\cite{workman2015predicting} provides aligned street-view and aerial image pairs across the United States, serving as an early benchmark for the field. The more recent VIGOR dataset~\cite{zhu2021vigor} offers additional challenges with its same-area and cross-area evaluation protocols.
+
+While these datasets focus primarily on geo-localization and retrieval tasks, there is growing interest in orientation estimation as a related but distinct problem. Our work addresses this gap by demonstrating effective orientation estimation on existing benchmarks while introducing novel evaluation metrics for orientation accuracy and confidence estimation.
+
+The development of large-scale, geographically diverse datasets like CVGlobal further advances the field by providing more comprehensive evaluation scenarios across different geographical regions and environmental conditions.

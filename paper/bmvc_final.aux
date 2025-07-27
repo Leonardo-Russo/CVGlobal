@@ -5,45 +5,93 @@
 \bibstyle{plainnat}
 \citation{Authors06}
 \citation{Mermin89}
+\citation{lin2013cross}
+\citation{workman2015predicting}
+\citation{hu2018cvm}
+\citation{shi2019spatial}
+\citation{regmi2018cross}
+\citation{zhu2021vigor}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
 \newlabel{sec:intro}{{1}{1}{Introduction}{section.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {2}Dataset Generation Method}{1}{section.2}\protected@file@percent }
-\newlabel{sec:dataset_generation}{{2}{1}{Dataset Generation Method}{section.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Dataset Design and Sampling Strategy}{1}{subsection.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Related Works}{1}{section.2}\protected@file@percent }
+\newlabel{sec:related_works}{{2}{1}{Related Works}{section.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Cross-View Geo-localization}{1}{subsection.2.1}\protected@file@percent }
+\citation{dosovitskiy2020image}
+\citation{zhu2023vigor}
+\citation{toker2021coming}
+\citation{he2020momentum}
+\citation{chen2020simple}
+\citation{grill2020bootstrap}
+\citation{oquab2023dinov2}
+\citation{caron2021emerging}
+\citation{bansal2011ultra}
+\citation{lin2015learning}
+\citation{workman2015predicting}
+\citation{shi2020where}
+\citation{workman2015predicting}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Vision Transformers in Cross-View Tasks}{2}{subsection.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Self-Supervised Visual Representation Learning}{2}{subsection.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Orientation Estimation and Spatial Alignment}{2}{subsection.2.4}\protected@file@percent }
+\citation{yang2024depth}
+\citation{workman2015predicting}
+\citation{zhu2021vigor}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5}Sky Segmentation and Depth Estimation}{3}{subsection.2.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.6}Benchmark Datasets}{3}{subsection.2.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Dataset Generation Method}{3}{section.3}\protected@file@percent }
+\newlabel{sec:dataset_generation}{{3}{3}{Dataset Generation Method}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Dataset Design and Sampling Strategy}{3}{subsection.3.1}\protected@file@percent }
 \citation{schneider2010new}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Geographical sampling regions defined for each continent and environment type.}}{2}{table.1}\protected@file@percent }
-\newlabel{tab:sampling_regions}{{1}{2}{Geographical sampling regions defined for each continent and environment type}{table.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Urban-Rural Classification}{2}{subsection.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Multi-Modal Data Acquisition}{2}{subsection.2.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.1}Coordinate Generation and Validation}{2}{subsubsection.2.3.1}\protected@file@percent }
-\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Outdoor Location Detection}}{3}{algorithm.1}\protected@file@percent }
-\newlabel{alg:outdoor_detection}{{1}{3}{Outdoor Detection Algorithm}{algorithm.1}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.2}Outdoor Detection Algorithm}{3}{subsubsection.2.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.3}Image Acquisition and Processing}{3}{subsubsection.2.3.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Satellite Imagery}{3}{section*.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Street View Imagery}{4}{section*.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Quality Assurance and Error Handling}{4}{subsection.2.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.1}Network Resilience}{4}{subsubsection.2.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.2}Coordinate Correction}{4}{subsubsection.2.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.3}Resume Capability}{4}{subsubsection.2.4.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.5}Dataset Statistics and Validation}{5}{subsection.2.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3}CroDino Method}{5}{section.3}\protected@file@percent }
-\newlabel{sec:method}{{3}{5}{CroDino Method}{section.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Problem Formulation}{5}{subsection.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Architecture Overview}{5}{subsection.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Dual-Stream Feature Extraction}{5}{subsubsection.3.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}Token Processing Pipeline}{6}{subsubsection.3.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Orientation-Aware Token Aggregation}{6}{subsection.3.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1}Sky Filtering and Depth Estimation}{6}{subsubsection.3.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.2}Multi-Layer Token Aggregation}{6}{subsubsection.3.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Orientation Estimation}{7}{subsection.3.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.1}Cross-Modal Alignment}{7}{subsubsection.3.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.2}Confidence Estimation}{7}{subsubsection.3.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Training Strategy}{7}{subsection.3.5}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Geographical sampling regions defined for each continent and environment type.}}{4}{table.1}\protected@file@percent }
+\newlabel{tab:sampling_regions}{{1}{4}{Geographical sampling regions defined for each continent and environment type}{table.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Urban-Rural Classification}{4}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Multi-Modal Data Acquisition}{4}{subsection.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1}Coordinate Generation and Validation}{4}{subsubsection.3.3.1}\protected@file@percent }
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Outdoor Location Detection}}{5}{algorithm.1}\protected@file@percent }
+\newlabel{alg:outdoor_detection}{{1}{5}{Outdoor Detection Algorithm}{algorithm.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.2}Outdoor Detection Algorithm}{5}{subsubsection.3.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.3}Image Acquisition and Processing}{5}{subsubsection.3.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Satellite Imagery}{5}{section*.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Street View Imagery}{6}{section*.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Quality Assurance and Error Handling}{6}{subsection.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.1}Network Resilience}{6}{subsubsection.3.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.2}Coordinate Correction}{6}{subsubsection.3.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.3}Resume Capability}{6}{subsubsection.3.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Dataset Statistics and Validation}{7}{subsection.3.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Crossview Method}{7}{section.4}\protected@file@percent }
+\newlabel{sec:method}{{4}{7}{Crossview Method}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Problem Formulation}{7}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Architecture Overview}{7}{subsection.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.1}Dual-Stream Feature Extraction}{7}{subsubsection.4.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.2}Token Processing Pipeline}{8}{subsubsection.4.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Orientation-Aware Token Aggregation}{8}{subsection.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.1}Sky Filtering and Depth Estimation}{8}{subsubsection.4.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.2}Multi-Layer Token Aggregation}{8}{subsubsection.4.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Orientation Estimation}{9}{subsection.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.1}Cross-Modal Alignment}{9}{subsubsection.4.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.2}Confidence Estimation}{9}{subsubsection.4.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Training Strategy}{9}{subsection.4.5}\protected@file@percent }
 \bibdata{egbib}
 \bibcite{Authors06}{{1}{2006}{{Authors}}{{}}}
-\bibcite{Mermin89}{{2}{1989}{{Mermin}}{{}}}
-\gdef \BMVA@LastPage{8}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.5.1}Data Preprocessing}{8}{subsubsection.3.5.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Implementation Details}{8}{subsection.3.6}\protected@file@percent }
-\gdef \@abspage@last{8}
+\bibcite{bansal2011ultra}{{2}{2011}{{Bansal et~al.}}{{Bansal, Daniilidis, and Sawhney}}}
+\bibcite{caron2021emerging}{{3}{2021}{{Caron et~al.}}{{Caron, Touvron, Misra, J{\'e}gou, Mairal, Bojanowski, and Joulin}}}
+\bibcite{chen2020simple}{{4}{2020}{{Chen et~al.}}{{Chen, Kornblith, Norouzi, and Hinton}}}
+\bibcite{dosovitskiy2020image}{{5}{2021}{{Dosovitskiy et~al.}}{{Dosovitskiy, Beyer, Kolesnikov, Weissenborn, Zhai, Unterthiner, Dehghani, Minderer, Heigold, Gelly, et~al.}}}
+\bibcite{grill2020bootstrap}{{6}{2020}{{Grill et~al.}}{{Grill, Strub, Altch{\'e}, Tallec, Richemond, Buchatskaya, Doersch, Avila~Pires, Guo, Gheshlaghi~Azar, et~al.}}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.5.1}Data Preprocessing}{10}{subsubsection.4.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6}Implementation Details}{10}{subsection.4.6}\protected@file@percent }
+\bibcite{he2020momentum}{{7}{2020}{{He et~al.}}{{He, Fan, Wu, Xie, and Girshick}}}
+\bibcite{hu2018cvm}{{8}{2018}{{Hu et~al.}}{{Hu, Feng, Nguyen, and Lee}}}
+\bibcite{lin2013cross}{{9}{2013}{{Lin et~al.}}{{Lin, Cui, Belongie, and Hays}}}
+\bibcite{lin2015learning}{{10}{2015}{{Lin et~al.}}{{Lin, Belongie, and Hays}}}
+\bibcite{Mermin89}{{11}{1989}{{Mermin}}{{}}}
+\bibcite{oquab2023dinov2}{{12}{2023}{{Oquab et~al.}}{{Oquab, Darcet, Moutakanni, Vo, Szafraniec, Khalidov, Fernandez, Haziza, Massa, El-Nouby, et~al.}}}
+\bibcite{regmi2018cross}{{13}{2018}{{Regmi and Borji}}{{}}}
+\bibcite{shi2019spatial}{{14}{2019}{{Shi et~al.}}{{Shi, Yu, Campbell, and Li}}}
+\bibcite{shi2020where}{{15}{2020}{{Shi et~al.}}{{Shi, Yu, Campbell, and Li}}}
+\bibcite{toker2021coming}{{16}{2021}{{Toker et~al.}}{{Toker, Zhou, Maximov, and Leal-Taix{\'e}}}}
+\bibcite{workman2015predicting}{{17}{2015}{{Workman et~al.}}{{Workman, Souvenir, and Jacobs}}}
+\bibcite{yang2024depth}{{18}{2024}{{Yang et~al.}}{{Yang, Kang, Huang, Xu, Feng, and Zhao}}}
+\bibcite{zhu2021vigor}{{19}{2021}{{Zhu et~al.}}{{Zhu, Yang, and Chen}}}
+\bibcite{zhu2023vigor}{{20}{2023}{{Zhu et~al.}}{{Zhu, Yang, and Chen}}}
+\gdef \BMVA@LastPage{12}
+\gdef \@abspage@last{12}

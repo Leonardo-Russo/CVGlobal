@@ -1,4 +1,4 @@
-\begin{thebibliography}{2}
+\begin{thebibliography}{20}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -11,10 +11,138 @@ Authors.
 \newblock ECCV06 submission ID 324. Supplied as additional material {\tt
   eccv06.pdf}.
 
+\bibitem[Bansal et~al.(2011)Bansal, Daniilidis, and Sawhney]{bansal2011ultra}
+Mayank Bansal, Kostas Daniilidis, and Harpreet Sawhney.
+\newblock Ultra-wide baseline facade matching for geo-localization.
+\newblock In \emph{Proceedings of the 3rd ACM SIGSPATIAL International Workshop
+  on Location-Based Social Networks}, pages 15--22, 2011.
+
+\bibitem[Caron et~al.(2021)Caron, Touvron, Misra, J{\'e}gou, Mairal,
+  Bojanowski, and Joulin]{caron2021emerging}
+Mathilde Caron, Hugo Touvron, Ishan Misra, Herv{\'e} J{\'e}gou, Julien Mairal,
+  Piotr Bojanowski, and Armand Joulin.
+\newblock Emerging properties in self-supervised vision transformers.
+\newblock In \emph{Proceedings of the IEEE/CVF international conference on
+  computer vision}, pages 9650--9660, 2021.
+
+\bibitem[Chen et~al.(2020)Chen, Kornblith, Norouzi, and Hinton]{chen2020simple}
+Ting Chen, Simon Kornblith, Mohammad Norouzi, and Geoffrey Hinton.
+\newblock A simple framework for contrastive learning of visual
+  representations.
+\newblock In \emph{International conference on machine learning}, pages
+  1597--1607. PMLR, 2020.
+
+\bibitem[Dosovitskiy et~al.(2021)Dosovitskiy, Beyer, Kolesnikov, Weissenborn,
+  Zhai, Unterthiner, Dehghani, Minderer, Heigold, Gelly,
+  et~al.]{dosovitskiy2020image}
+Alexey Dosovitskiy, Lucas Beyer, Alexander Kolesnikov, Dirk Weissenborn,
+  Xiaohua Zhai, Thomas Unterthiner, Mostafa Dehghani, Matthias Minderer, Georg
+  Heigold, Sylvain Gelly, et~al.
+\newblock An image is worth 16x16 words: Transformers for image recognition at
+  scale.
+\newblock In \emph{International Conference on Learning Representations}, 2021.
+
+\bibitem[Grill et~al.(2020)Grill, Strub, Altch{\'e}, Tallec, Richemond,
+  Buchatskaya, Doersch, Avila~Pires, Guo, Gheshlaghi~Azar,
+  et~al.]{grill2020bootstrap}
+Jean-Bastien Grill, Florian Strub, Florent Altch{\'e}, Corentin Tallec, Pierre
+  Richemond, Elena Buchatskaya, Carl Doersch, Bernardo Avila~Pires, Zhaohan
+  Guo, Mohammad Gheshlaghi~Azar, et~al.
+\newblock Bootstrap your own latent-a new approach to self-supervised learning.
+\newblock \emph{Advances in neural information processing systems},
+  33:\penalty0 21271--21284, 2020.
+
+\bibitem[He et~al.(2020)He, Fan, Wu, Xie, and Girshick]{he2020momentum}
+Kaiming He, Haoqi Fan, Yuxin Wu, Saining Xie, and Ross Girshick.
+\newblock Momentum contrast for unsupervised visual representation learning.
+\newblock In \emph{Proceedings of the IEEE/CVF conference on computer vision
+  and pattern recognition}, pages 9729--9738, 2020.
+
+\bibitem[Hu et~al.(2018)Hu, Feng, Nguyen, and Lee]{hu2018cvm}
+Sixing Hu, Mengdan Feng, Rang~MH Nguyen, and Gim~Hee Lee.
+\newblock Cvm-net: Cross-view matching network for image-based ground-to-aerial
+  geo-localization.
+\newblock In \emph{Proceedings of the IEEE Conference on Computer Vision and
+  Pattern Recognition}, pages 7258--7267, 2018.
+
+\bibitem[Lin et~al.(2013)Lin, Cui, Belongie, and Hays]{lin2013cross}
+Tsung-Yi Lin, Yin Cui, Serge Belongie, and James Hays.
+\newblock Cross-view image geolocalization.
+\newblock In \emph{Proceedings of the IEEE Conference on Computer Vision and
+  Pattern Recognition}, pages 891--898, 2013.
+
+\bibitem[Lin et~al.(2015)Lin, Belongie, and Hays]{lin2015learning}
+Tsung-Yi Lin, Serge Belongie, and James Hays.
+\newblock Learning deep representations for ground-to-aerial geolocalization.
+\newblock In \emph{Proceedings of the IEEE conference on computer vision and
+  pattern recognition}, pages 5007--5015, 2015.
+
 \bibitem[Mermin(1989)]{Mermin89}
 N.~David Mermin.
 \newblock What's wrong with these equations?
 \newblock \emph{Physics Today}, October 1989.
 \newblock \small\url{http://www.cvpr.org/doc/mermin.pdf}.
+
+\bibitem[Oquab et~al.(2023)Oquab, Darcet, Moutakanni, Vo, Szafraniec, Khalidov,
+  Fernandez, Haziza, Massa, El-Nouby, et~al.]{oquab2023dinov2}
+Maxime Oquab, Timoth{\'e}e Darcet, Theo Moutakanni, Huy Vo, Marc Szafraniec,
+  Vasil Khalidov, Pierre Fernandez, Daniel Haziza, Francisco Massa, Alaaeldin
+  El-Nouby, et~al.
+\newblock Dinov2: Learning robust visual features without supervision.
+\newblock \emph{arXiv preprint arXiv:2304.07193}, 2023.
+
+\bibitem[Regmi and Borji(2018)]{regmi2018cross}
+Krishna Regmi and Ali Borji.
+\newblock Cross-view image synthesis using conditional gans.
+\newblock \emph{Proceedings of the IEEE Conference on Computer Vision and
+  Pattern Recognition}, pages 3501--3510, 2018.
+
+\bibitem[Shi et~al.(2019)Shi, Yu, Campbell, and Li]{shi2019spatial}
+Yujiao Shi, Xin Yu, Dylan Campbell, and Hongdong Li.
+\newblock Spatial-aware feature aggregation for image based cross-view
+  geo-localization.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~32, 2019.
+
+\bibitem[Shi et~al.(2020)Shi, Yu, Campbell, and Li]{shi2020where}
+Yujiao Shi, Xin Yu, Dylan Campbell, and Hongdong Li.
+\newblock Where am i looking at? joint location and orientation estimation by
+  cross-view matching.
+\newblock In \emph{Proceedings of the IEEE/CVF Conference on Computer Vision
+  and Pattern Recognition}, pages 4064--4072, 2020.
+
+\bibitem[Toker et~al.(2021)Toker, Zhou, Maximov, and
+  Leal-Taix{\'e}]{toker2021coming}
+Aysim Toker, Qunjie Zhou, Maxim Maximov, and Laura Leal-Taix{\'e}.
+\newblock Coming down to earth: Satellite-to-street view synthesis for
+  geo-localization.
+\newblock In \emph{Proceedings of the IEEE/CVF Conference on Computer Vision
+  and Pattern Recognition}, pages 6488--6497, 2021.
+
+\bibitem[Workman et~al.(2015)Workman, Souvenir, and
+  Jacobs]{workman2015predicting}
+Scott Workman, Richard Souvenir, and Nathan Jacobs.
+\newblock On the location dependence of convolutional neural network features.
+\newblock In \emph{Proceedings of the IEEE conference on computer vision and
+  pattern recognition workshops}, pages 70--78, 2015.
+
+\bibitem[Yang et~al.(2024)Yang, Kang, Huang, Xu, Feng, and Zhao]{yang2024depth}
+Lihe Yang, Bingyi Kang, Zilong Huang, Xiaogang Xu, Jiashi Feng, and Hengshuang
+  Zhao.
+\newblock Depth anything: Unleashing the power of large-scale unlabeled data.
+\newblock \emph{Proceedings of the IEEE/CVF Conference on Computer Vision and
+  Pattern Recognition}, 2024.
+
+\bibitem[Zhu et~al.(2021)Zhu, Yang, and Chen]{zhu2021vigor}
+Sijie Zhu, Taojiannan Yang, and Chen Chen.
+\newblock Vigor: Cross-view image geo-localization beyond one-to-one retrieval.
+\newblock In \emph{Proceedings of the IEEE/CVF Conference on Computer Vision
+  and Pattern Recognition}, pages 3640--3649, 2021.
+
+\bibitem[Zhu et~al.(2023)Zhu, Yang, and Chen]{zhu2023vigor}
+Sijie Zhu, Taojiannan Yang, and Chen Chen.
+\newblock Revisiting cross-view geo-localization in the wild with transformer.
+\newblock In \emph{Proceedings of the IEEE/CVF International Conference on
+  Computer Vision}, pages 8640--8649, 2023.
 
 \end{thebibliography}

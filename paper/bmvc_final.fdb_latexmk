@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex bmvc_final"] 1753541931.0595 "bmvc_final.aux" "bmvc_final.bbl" "bmvc_final" 1753542636.43776 0
-  "./egbib.bib" 1753254675 2830 d543db5f57f7ebe43abfd96df2ee58ec ""
+["bibtex bmvc_final"] 1753640564.97376 "bmvc_final.aux" "bmvc_final.bbl" "bmvc_final" 1753640566.18008 0
+  "./egbib.bib" 1753640562 8863 bcf02b51bd3fd50d9f05aed8500e0779 ""
   "C:/Users/russ_le/AppData/Local/Programs/MiKTeX/bibtex/bst/natbib/plainnat.bst" 1284455456 26816 ffe5423d2019860bad9f54bc402fac15 ""
-  "bmvc_final.aux" 1753542635 4993 2019300ede6b205edaa388f0adea3ced "pdflatex"
+  "bmvc_final.aux" 1753640565 8391 a5f6c59d945c5abbda071c4e23a25acf "pdflatex"
   (generated)
   "bmvc_final.bbl"
   "bmvc_final.blg"
   (rewritten before read)
-["pdflatex"] 1753542635.43114 "c:/Users/russ_le/Projects/CVGlobal/paper/bmvc_final.tex" "bmvc_final.pdf" "bmvc_final" 1753542636.43805 0
+["pdflatex"] 1753640565.14869 "c:/Users/russ_le/Projects/CVGlobal/paper/bmvc_final.tex" "bmvc_final.pdf" "bmvc_final" 1753640566.18056 0
   "C:/Users/russ_le/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1753541600 82507 a9eef8696c92627b87e9975edea03b2a ""
   "C:/Users/russ_le/AppData/Local/MiKTeX/fonts/tfm/public/rsfs/rsfs10.tfm" 1753255389 688 37338d6ab346c2f1466b29e195316aa4 ""
   "C:/Users/russ_le/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1753255348 13255281 f5446d4481a6ef13f63ebb36eb39c2f0 ""
@@ -150,13 +150,14 @@
   "C:/Users/russ_le/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "bmvc2k.cls" 1753542607 24892 b76efc429cb22eb9469c17542c8db8f3 ""
   "bmvc2k_natbib.sty" 1753254675 38610 a75af17409d062c9a349bf3b3517c39c ""
-  "bmvc_final.aux" 1753542635 4993 2019300ede6b205edaa388f0adea3ced "pdflatex"
-  "bmvc_final.bbl" 1753541931 674 f3d2df2a3595a4ae07ae410a51067d72 "bibtex bmvc_final"
-  "bmvc_final.tex" 1753542402 2029 f5cddfd49afac10977e304b47d8273d5 ""
-  "c:/Users/russ_le/Projects/CVGlobal/paper/bmvc_final.tex" 1753542402 2029 f5cddfd49afac10977e304b47d8273d5 ""
+  "bmvc_final.aux" 1753640565 8391 a5f6c59d945c5abbda071c4e23a25acf "pdflatex"
+  "bmvc_final.bbl" 1753640565 7307 b9e3fae155d98db93775b0f06d280c19 "bibtex bmvc_final"
+  "bmvc_final.tex" 1753640504 2117 05d4f67eed0bbcb49db7eb0cd73baec2 ""
+  "c:/Users/russ_le/Projects/CVGlobal/paper/bmvc_final.tex" 1753640504 2117 05d4f67eed0bbcb49db7eb0cd73baec2 ""
   "sections/dataset_generation.tex" 1753541948 8447 b20249473c02a93459429df4d96481be ""
   "sections/intro.tex" 1753254675 3 2f43b42fd833d1e77420a8dae7419000 ""
   "sections/method.tex" 1753542634 7600 32b60858b3832993a0268b9483bf57cd ""
+  "sections/related_works.tex" 1753640519 6855 8669498fa8797c7de915901c2d7579fe ""
   (generated)
   "bmvc_final.aux"
   "bmvc_final.log"
