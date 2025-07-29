@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.7.23)  29 JUL 2025 22:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.7.23)  29 JUL 2025 23:35
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -532,143 +532,97 @@ File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 
 [1
 
-]) (sections/related_works.tex BMVC cite {Lin, Cui, Belongie, and Hays} 2013 BMVC cite {Workman, Souvenir, and Jacobs} 2015 BMVC cite {Hu, Feng, Nguyen, and Lee} 2018 BMVC cite {Shi, Yu, Campbell, and Li} 2019 BMVC cite {Regmi and Borji} 2018 BMVC cite {Zhu, Yang, and Chen} 2021 BMVC cite {Dosovitskiy, Beyer, Kolesnikov, Weissenborn, Zhai, Unterthiner, Dehghani, Minderer, Heigold, Gelly, et~al.} 2021 BMVC cite {Zhu, Yang, and Chen} 2023 BMVC cite {Toker, Zhou, Maximov, and Leal-Taix{é}} 2021
+]) (sections/related_works.tex BMVC cite {Workman, Souvenir, and Jacobs} 2015
 
-[2] BMVC cite {He, Fan, Wu, Xie, and Girshick} 2020 BMVC cite {Chen, Kornblith, Norouzi, and Hinton} 2020 BMVC cite {Grill, Strub, Altch{é}, Tallec, Richemond, Buchatskaya, Doersch, Avila~Pires, Guo, Gheshlaghi~Azar, et~al.} 2020 BMVC cite {Oquab, Darcet, Moutakanni, Vo, Szafraniec, Khalidov, Fernandez, Haziza, Massa, El-Nouby, et~al.} 2023 BMVC cite {Caron, Touvron, Misra, J{é}gou, Mairal, Bojanowski, and Joulin} 2021 BMVC cite {Bansal, Daniilidis, and Sawhney} 2011 BMVC cite {Lin, Belongie, and Hays} 2015 BMVC cite {Workman, Souvenir, and Jacobs} 2015 BMVC cite {Shi, Yu, Campbell, and Li} 2020
-Overfull \hbox (6.37518pt too wide) in paragraph at lines 30--31
-\T1/ptm/m/n/10 Orientation es-ti-ma-tion in cross-view sce-nar-ios has been ad-dressed through var-i-ous ap-proaches.
- []
+Package natbib Warning: Citation `workman2015learning' on page 2 undefined on input line 8.
 
+BMVC cite {Workman, Souvenir, and Jacobs} 2015 BMVC cite {Zhu, Yang, and Chen} 2021 BMVC cite {Hu, Feng, Nguyen, and Lee} 2018
 
-Overfull \hbox (2.76547pt too wide) in paragraph at lines 32--33
-[]\T1/ptm/m/n/10 Attention mech-a-nisms have proven par-tic-u-larly ef-fec-tive for cross-view align-ment. Cross-
- []
-
-BMVC cite {Workman, Souvenir, and Jacobs} 2015 BMVC cite {Yang, Kang, Huang, Xu, Feng, and Zhao} 2024
-
-[3] BMVC cite {Workman, Souvenir, and Jacobs} 2015 BMVC cite {Zhu, Yang, and Chen} 2021
-
-Package natbib Warning: Citation `workman2015wide' on page 4 undefined on input line 61.
+Package natbib Warning: Citation `NEURIPS2019_ba2f0015' on page 2 undefined on input line 10.
 
 
-Package natbib Warning: Citation `workman2015learning' on page 4 undefined on input line 61.
-
-
-Package natbib Warning: Citation `zhai2017cvusa' on page 4 undefined on input line 61.
-
-
-Package natbib Warning: Citation `Hu_2018_CVPR' on page 4 undefined on input line 61.
-
-
-Package natbib Warning: Citation `9579411' on page 4 undefined on input line 61.
-
-
-Package natbib Warning: Citation `9360609' on page 4 undefined on input line 61.
-
-
-Package natbib Warning: Citation `shi2019optimalfeaturetransportcrossview' on page 4 undefined on input line 65.
+Package natbib Warning: Citation `shi2019optimalfeaturetransportcrossview' on page 2 undefined on input line 10.
 
 BMVC cite {Regmi and Borji} 2018
 
-Package natbib Warning: Citation `NEURIPS2019_ba2f0015' on page 4 undefined on input line 65.
+Package natbib Warning: Citation `shi2020ilookingatjoint' on page 2 undefined on input line 12.
+
+BMVC cite {Dosovitskiy, Beyer, Kolesnikov, Weissenborn, Zhai, Unterthiner, Dehghani, Minderer, Heigold, Gelly, et~al.} 2021
+
+Package natbib Warning: Citation `yang2021cross' on page 2 undefined on input line 16.
 
 
-Package natbib Warning: Citation `10.1016/j.compeleceng.2022.108335' on page 4 undefined on input line 65.
-
-
-Package natbib Warning: Citation `10.1016/j.compeleceng.2022.108335' on page 4 undefined on input line 69.
-
-
-Package natbib Warning: Citation `shi2020ilookingatjoint' on page 4 undefined on input line 69.
+Package natbib Warning: Citation `wang2021multi' on page 2 undefined on input line 16.
 
 
 
-[4]
+[2] BMVC cite {He, Fan, Wu, Xie, and Girshick} 2020 BMVC cite {Chen, Kornblith, Norouzi, and Hinton} 2020 BMVC cite {Grill, Strub, Altch{é}, Tallec, Richemond, Buchatskaya, Doersch, Avila~Pires, Guo, Gheshlaghi~Azar, et~al.} 2020 BMVC cite {Oquab, Darcet, Moutakanni, Vo, Szafraniec, Khalidov, Fernandez, Haziza, Massa, El-Nouby, et~al.} 2023 BMVC cite {Workman, Souvenir, and Jacobs} 2015 BMVC cite {Yang, Kang, Huang, Xu, Feng, and Zhao} 2024) (sections/dataset_generation.tex
 
-Package natbib Warning: Citation `yang2021cross' on page 5 undefined on input line 73.
-
-
-Package natbib Warning: Citation `wang2021multi' on page 5 undefined on input line 73.
-
-
-Package natbib Warning: Citation `zhou2024gtnetgraphtransformernetwork' on page 5 undefined on input line 73.
-
-) (sections/dataset_generation.tex
-
-[5]
+[3]
 Overfull \hbox (1.82732pt too wide) in paragraph at lines 22--42
  [][] 
  []
 
+<.././paper/images/sampling_regions_map.png, id=71, 1003.1076pt x 570.4512pt>
+File: .././paper/images/sampling_regions_map.png Graphic file (type png)
+<use .././paper/images/sampling_regions_map.png>
+Package pdftex.def Info: .././paper/images/sampling_regions_map.png  used on input line 47.
+(pdftex.def)             Requested size: 293.85783pt x 167.10655pt.
+) (sections/method.tex
 
-Package natbib Warning: Citation `schneider2010new' on page 6 undefined on input line 46.
-
-
-
-[6
+[4
 pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.64 
-     ]
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 76.
+l.5 
+    ]
+Overfull \hbox (3.08635pt too wide) in paragraph at lines 18--19
+[]\T1/ptm/b/n/10 Flexible Fea-ture Ex-trac-tor\T1/ptm/m/n/10 : Sup-port for DINOv2-ViT-B/14, CLIP-ViT-Base-Patch16,
+ []
 
+
+
+[5
+pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.20     \item \textbf
+                      {Dynamic Grid Adaptation}: Automatic grid size calcula... <.././paper/images/sampling_regions_map.png>]
+
+[6]
 
 [7]
 
-[8]) (sections/method.tex
-
-[9]
-
-[10]
-
-[11]
-
-LaTeX Warning: Command \textdegree invalid in math mode on input line 128.
-
-
-LaTeX Warning: Command \textdegree invalid in math mode on input line 128.
-
-
-LaTeX Warning: Command \textdegree invalid in math mode on input line 128.
-
-
-LaTeX Warning: Command \textdegree invalid in math mode on input line 128.
-
-Missing character: There is no ° in font zptmcm7t!
-Missing character: There is no ° in font zptmcm7t!
-) (bmvc_final.bbl
+[8]) (bmvc_final.bbl
 LaTeX Font Info:    Trying to load font information for T1+pcr on input line 11.
  (C:\Users\russ_le\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
 
-[12]
-
-[13])
+[9])
 
 Package natbib Warning: There were undefined citations.
 
 
 
-[14] (bmvc_final.aux)
+[10] (bmvc_final.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-07-11>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 12031 strings out of 468149
- 186699 string characters out of 5430114
- 601468 words of memory out of 5000000
- 40281 multiletter control sequences out of 15000+600000
+ 11976 strings out of 468149
+ 186034 string characters out of 5430114
+ 603132 words of memory out of 5000000
+ 40259 multiletter control sequences out of 15000+600000
  708452 words of font info for 156 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,16n,93p,768b,624s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/urw/symbol/usyr.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/urw/symbol/usyr.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on bmvc_final.pdf (14 pages, 216453 bytes).
+ 90i,16n,93p,736b,566s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/urw/symbol/usyr.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/urw/symbol/usyr.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
+Output written on bmvc_final.pdf (10 pages, 6436255 bytes).
 PDF statistics:
- 327 PDF objects out of 1000 (max. 8388607)
- 107 named destinations out of 1000 (max. 500000)
- 151 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 243 PDF objects out of 1000 (max. 8388607)
+ 74 named destinations out of 1000 (max. 500000)
+ 90 words of extra memory for PDF output out of 10000 (max. 10000000)
 

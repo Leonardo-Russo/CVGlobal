@@ -1,13 +1,14 @@
 # Fdb version 4
-["bibtex bmvc_final"] 1753822580.94691 "bmvc_final.aux" "bmvc_final.bbl" "bmvc_final" 1753822582.29752 0
+["bibtex bmvc_final"] 1753824924.36655 "bmvc_final.aux" "bmvc_final.bbl" "bmvc_final" 1753824926.49675 0
   "./egbib.bib" 1753640562 8863 bcf02b51bd3fd50d9f05aed8500e0779 ""
   "C:/Users/russ_le/AppData/Local/Programs/MiKTeX/bibtex/bst/natbib/plainnat.bst" 1284455456 26816 ffe5423d2019860bad9f54bc402fac15 ""
-  "bmvc_final.aux" 1753822581 9800 a3b25743de64dc5846e51946bc86bb2e "pdflatex"
+  "bmvc_final.aux" 1753824925 6305 f21afcaf8b573b5c0e7772db42f0d1c6 "pdflatex"
   (generated)
   "bmvc_final.bbl"
   "bmvc_final.blg"
   (rewritten before read)
-["pdflatex"] 1753822581.11941 "c:/Users/russ_le/Projects/CVGlobal/paper/bmvc_final.tex" "bmvc_final.pdf" "bmvc_final" 1753822582.29784 0
+["pdflatex"] 1753824924.57128 "c:/Users/russ_le/Projects/CVGlobal/paper/bmvc_final.tex" "bmvc_final.pdf" "bmvc_final" 1753824926.49706 0
+  ".././paper/images/sampling_regions_map.png" 1753824027 4792653 4e47b5529161654d63f6ff957479ab76 ""
   "C:/Users/russ_le/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1753541600 82507 a9eef8696c92627b87e9975edea03b2a ""
   "C:/Users/russ_le/AppData/Local/MiKTeX/fonts/tfm/public/rsfs/rsfs10.tfm" 1753255389 688 37338d6ab346c2f1466b29e195316aa4 ""
   "C:/Users/russ_le/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1753255348 13255281 f5446d4481a6ef13f63ebb36eb39c2f0 ""
@@ -54,7 +55,6 @@
   "C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1247596667 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
   "C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1247596667 35752 024fb6c41858982481f6968b5fc26508 ""
   "C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1247596667 32569 5e5ddc8df908dea60932f3c484a54c0d ""
-  "C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb" 1247596673 34694 870c211f62cb72718a00e353f14f254d ""
   "C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb" 1136846148 45758 19968a0990191524e34e1994d4a31cb6 ""
   "C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb" 1136849748 35941 adef23a721dd8354a4a2bf4434f1c484 ""
   "C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb" 1136849748 44648 23115b2a545ebfe2c526c3ca99db8b95 ""
@@ -150,14 +150,14 @@
   "C:/Users/russ_le/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "bmvc2k.cls" 1753542607 24892 b76efc429cb22eb9469c17542c8db8f3 ""
   "bmvc2k_natbib.sty" 1753254675 38610 a75af17409d062c9a349bf3b3517c39c ""
-  "bmvc_final.aux" 1753822581 9800 a3b25743de64dc5846e51946bc86bb2e "pdflatex"
-  "bmvc_final.bbl" 1753822581 7307 b9e3fae155d98db93775b0f06d280c19 "bibtex bmvc_final"
+  "bmvc_final.aux" 1753824925 6305 f21afcaf8b573b5c0e7772db42f0d1c6 "pdflatex"
+  "bmvc_final.bbl" 1753824924 4550 e6e997501620d7efa1ad2dd0183be225 "bibtex bmvc_final"
   "bmvc_final.tex" 1753822573 1913 4de6b61f24a4bacfe504deecfb0ea088 ""
   "c:/Users/russ_le/Projects/CVGlobal/paper/bmvc_final.tex" 1753822573 1913 4de6b61f24a4bacfe504deecfb0ea088 ""
-  "sections/dataset_generation.tex" 1753822538 8515 cf1d80c8507211c5b8353597790af5d0 ""
+  "sections/dataset_generation.tex" 1753824432 3971 a180ea1587bfdd40d05736c02108255e ""
   "sections/intro.tex" 1753822483 2805 bf1d457c471ffdf8925ba14b09097637 ""
-  "sections/method.tex" 1753822579 7647 e518a4a8e3b5945d8e69bf282f2db62f ""
-  "sections/related_works.tex" 1753822568 11126 8c90abadda388c5dd6401d5790053fe2 ""
+  "sections/method.tex" 1753824921 9897 6ba7e130bc327fc6daf86f23656d3374 ""
+  "sections/related_works.tex" 1753822754 5598 3ac04b76e29a002f4e6c24f4d8cffe68 ""
   (generated)
   "bmvc_final.aux"
   "bmvc_final.log"

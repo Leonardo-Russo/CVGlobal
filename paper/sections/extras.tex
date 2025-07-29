@@ -1,0 +1,130 @@
+\section{Detailed Dataset Generation Methodology}
+\label{sec:detailed_methodology}
+
+This section provides comprehensive technical details about the CVGlobal dataset generation process, including implementation specifics, algorithms, and quality assurance measures.
+
+\subsection{Urban-Rural Classification}
+
+To ensure accurate labeling of locations as urban or rural, we employ the Global Urban Areas dataset~\cite{schneider2010new}, which provides comprehensive polygon boundaries for urban areas worldwide. For each randomly generated coordinate, we perform a spatial intersection test to determine its classification:
+
+\begin{equation}
+\text{Urban}(p) = \begin{cases}
+1 & \text{if } p \in \bigcup_{i} U_i \\
+0 & \text{otherwise}
+\end{cases}
+\end{equation}
+
+where $p$ represents a coordinate point and $U_i$ denotes the $i$-th urban area polygon from the Global Urban Areas dataset. This automated classification ensures consistent and objective urban-rural labeling across all geographical regions.
+
+\subsection{Detailed Data Acquisition Pipeline}
+
+Our data acquisition pipeline consists of three main components: \textit{coordinate generation}, \textit{outdoor location validation}, and \textit{multi-modal image retrieval}.
+
+\subsubsection{Coordinate Generation and Validation}
+
+For each sampling region, we generate random coordinates within the specified geographical boundaries using uniform sampling. Each coordinate undergoes a validation process to ensure data quality:
+
+\begin{enumerate}
+    \item \textbf{Urban-Rural Consistency}: Verify that the generated coordinate matches the intended environment type (urban/rural) using the spatial intersection described above.
+    \item \textbf{Street View Availability}: Query the Google Street View Metadata API to confirm image availability at the location.
+    \item \textbf{Outdoor Location Filtering}: Apply our outdoor detection algorithm to exclude indoor environments.
+\end{enumerate}
+
+\subsubsection{Outdoor Detection Algorithm}
+
+To ensure our dataset captures genuine outdoor environments, we implement a robust filtering mechanism that leverages Google Places API data. Our algorithm evaluates each location using the following criteria:
+
+\begin{algorithm}[t]
+\caption{Outdoor Location Detection}
+\label{alg:outdoor_detection}
+\begin{algorithmic}[1]
+\Require Street View metadata $M$, Google Maps client $G$
+\Ensure Boolean indicating outdoor location
+\If{$M.\mathrm{status} \neq \mathrm{OK}$}
+    \State \Return False
+\EndIf
+\If{$M.\mathrm{place\_id}$ is undefined}
+    \State \Return True \Comment{Assume outdoor for street-level locations}
+\EndIf
+\State $\mathrm{details} \gets G.\mathrm{place}(M.\mathrm{place\_id})$
+\State $\mathrm{types} \gets \mathrm{details.result.types}$
+\State $\mathrm{indoor\_types} \gets \{\mathrm{shopping\_mall}, \mathrm{store}, \mathrm{restaurant}, \mathrm{hospital}, \ldots\}$
+\If{$\mathrm{types} \cap \mathrm{indoor\_types} \neq \emptyset$}
+    \State \Return False
+\Else
+    \State \Return True
+\EndIf
+\end{algorithmic}
+\end{algorithm}
+
+This approach is more nuanced than simple keyword filtering, as it distinguishes between genuinely indoor locations (e.g., shopping malls, restaurants) and outdoor points of interest (e.g., parks, monuments) that may also carry establishment tags.
+
+\subsubsection{Image Acquisition and Processing}
+
+For each validated coordinate, we acquire two types of imagery:
+
+\paragraph{Satellite Imagery} We retrieve high-resolution satellite images using the Google Static Maps API with the following specifications:
+\begin{itemize}
+    \item Resolution: 640x640 pixels
+    \item Zoom level: 18 (approximately 1.19 meters/pixel)
+    \item Map type: Satellite view
+    \item Format: JPEG
+\end{itemize}
+
+\paragraph{Street View Imagery} We collect street-view images from four cardinal directions (0°, 90°, 180°, 270°) to provide comprehensive ground-level perspective. Each image has:
+\begin{itemize}
+    \item Resolution: 640x640 pixels
+    \item Field of view: Default Google Street View settings
+    \item Format: JPEG
+\end{itemize}
+
+The four directional images are horizontally concatenated to create a panoramic representation, resulting in a 2560x640 pixel stitched image that captures the complete ground-level environment.
+
+\subsection{Quality Assurance and Error Handling}
+
+Our data acquisition pipeline implements robust error handling and quality assurance mechanisms:
+
+\subsubsection{Network Resilience}
+We employ an exponential backoff retry strategy for API requests, with up to 3 retry attempts for failed connections. This approach handles temporary network issues and API rate limiting gracefully.
+
+\subsubsection{Coordinate Correction}
+The Google Street View API may return imagery from coordinates slightly different from the requested location due to road network constraints. We handle this by:
+\begin{enumerate}
+    \item Recording both original and corrected coordinates
+    \item Using corrected coordinates for file naming and deduplication
+    \item Ensuring consistent satellite-street view pairing
+\end{enumerate}
+
+\subsubsection{Resume Capability}
+Our pipeline supports interruption and resumption, checking for existing complete image sets before processing each location. A complete set consists of:
+\begin{itemize}
+    \item One satellite image
+    \item Four directional street view images (0°, 90°, 180°, 270°)
+    \item One stitched panoramic image
+\end{itemize}
+
+\subsection{Dataset Statistics and Validation}
+
+Throughout the data collection process, we maintain comprehensive statistics including:
+\begin{itemize}
+    \item Success and failure rates per continent and environment type
+    \item API call counts and timing information
+    \item Error categorization (metadata failures, download failures, indoor rejections)
+    \item Coordinate generation efficiency metrics
+\end{itemize}
+
+These statistics are automatically compiled into detailed reports (both human-readable and machine-readable formats) that facilitate dataset validation and quality assessment.
+
+\subsection{Implementation Details}
+
+The dataset generation pipeline is implemented in Python with the following key components:
+
+\begin{itemize}
+    \item \textbf{Coordinate Generation}: Uniform random sampling within geographical bounding boxes
+    \item \textbf{API Integration}: Google Street View Static API, Google Static Maps API, and Google Places API
+    \item \textbf{Error Handling}: Exponential backoff with jitter, connection pooling, and comprehensive logging
+    \item \textbf{Data Management}: Atomic file operations, checksum validation, and duplicate detection
+    \item \textbf{Progress Tracking}: Real-time statistics collection and resumption state management
+\end{itemize}
+
+The complete pipeline processes locations in parallel while respecting API rate limits and implementing graceful degradation for network issues.
