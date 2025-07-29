@@ -1,3 +1,5 @@
+\section{Related Works}
+\label{sec:related_works}
 
 \subsection{Cross-View Geo-localization}
 
@@ -46,3 +48,34 @@ Several datasets have been developed to support cross-view geo-localization rese
 While these datasets focus primarily on geo-localization and retrieval tasks, there is growing interest in orientation estimation as a related but distinct problem. Our work addresses this gap by demonstrating effective orientation estimation on existing benchmarks while introducing novel evaluation metrics for orientation accuracy and confidence estimation.
 
 The development of large-scale, geographically diverse datasets like CVGlobal further advances the field by providing more comprehensive evaluation scenarios across different geographical regions and environmental conditions.
+
+
+
+\section{Related Works}
+
+The task of aligning images from drastically different viewpoints, such as ground-level and aerial perspectives, has garnered significant attention in computer vision due to its wide-ranging applications in robotics, augmented reality, and geo-localization. 
+Traditional methods often rely on handcrafted features and descriptors, which can be susceptible to significant viewpoint changes and complex scenes. The advent of deep learning, particularly with Convolutional Neural Networks (CNNs) and more recently, Vision Transformers (ViTs), has ushered in a new era for cross-view image alignment.
+
+\subsection{Deep Learning for Cross-View Geo-localization}
+
+Early works like Workman and Jacobs \cite{workman2015wide}, \cite{workman2015learning} pioneered the use of CNNs for cross-view matching, demonstrating the potential of learning feature representations directly from image data. The introduction of the CVUSA dataset \cite{zhai2017cvusa} further spurred research in this area, with methods like CVM-Net \cite{Hu_2018_CVPR} and Siam-FCANet34 \cite{9579411} focusing on designing powerful feature extraction networks. The recognition of orientation's importance in disambiguating locations led to the incorporation of orientation information into networks, as exemplified by Liu \& Li \cite{9360609}.
+
+\subsection{Addressing the Domain Gap}
+
+The inherent domain gap between ground and aerial images poses a significant challenge.  Approaches like CVFT \cite{shi2019optimalfeaturetransportcrossview} employ feature transport modules to bridge this gap, while others like Regmi and Shah \cite{regmi2018cross} leverage generative models to synthesize aerial views from ground images. The use of polar transformations on aerial images, as seen in SAFA \cite{NEURIPS2019_ba2f0015} and DSM \cite{10.1016/j.compeleceng.2022.108335}, has proven effective in coarsely aligning the spatial layouts of the two views.
+
+\subsection{Joint Location and Orientation Estimation}
+
+While many methods focus solely on location retrieval, the joint estimation of location and orientation is crucial for applications like outdoor Augmented Reality (AR). Shi et al. \cite{10.1016/j.compeleceng.2022.108335} proposed a CNN-based method for this joint estimation, highlighting the importance of spatial awareness in feature representations. Recent works like "Where am I looking at?" \cite{shi2020ilookingatjoint} further explore this direction, emphasizing the need for accurate orientation alignment, especially for images with limited field-of-view (FoV).
+
+\subsection{Transformer-based Approaches}
+
+The advent of Vision Transformers (ViTs) has brought new possibilities to cross-view geo-localization. L2LTR \cite{yang2021cross} introduced transformers to this task, showcasing their ability to capture global context and positional information.  Recent methods like TransGeo \cite{wang2021multi} and TransGCNN \cite{zhou2024gtnetgraphtransformernetwork} further leverage transformers, with the former using learnable position encoding and the latter combining convolutional and self-attention mechanisms.
+
+\subsection{Addressing Limitations}
+
+Despite the progress, existing methods often face limitations. Some require specific FoV information or struggle to generalize across different FoV scenarios. Others primarily focus on location retrieval, with orientation estimation as a byproduct. Additionally, many approaches assume the availability of ground-based panoramas, which may not be feasible in real-world applications.
+
+\subsection{Our Approach}
+
+Our work builds upon these advancements, aiming to address the limitations of existing methods. We propose a novel transformer-based framework for joint location and orientation estimation that is robust to variations in ground view orientations and FoVs. We introduce a modified triplet ranking loss to provide explicit orientation guidance during training, leading to improved accuracy in both location and orientation estimation. Furthermore, we extend our approach to utilize temporal information from a navigation pipeline, enabling continuous and consistent geo-localization for real-time outdoor AR applications.

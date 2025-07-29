@@ -5,10 +5,23 @@ Reallocating 'name_of_file' (item size: 1) to 9 items.
 The style file: plainnat.bst
 Reallocating 'name_of_file' (item size: 1) to 6 items.
 Database file #1: egbib.bib
+Warning--I didn't find a database entry for "workman2015wide"
+Warning--I didn't find a database entry for "workman2015learning"
+Warning--I didn't find a database entry for "zhai2017cvusa"
+Warning--I didn't find a database entry for "Hu_2018_CVPR"
+Warning--I didn't find a database entry for "9579411"
+Warning--I didn't find a database entry for "9360609"
+Warning--I didn't find a database entry for "shi2019optimalfeaturetransportcrossview"
+Warning--I didn't find a database entry for "NEURIPS2019_ba2f0015"
+Warning--I didn't find a database entry for "10.1016/j.compeleceng.2022.108335"
+Warning--I didn't find a database entry for "shi2020ilookingatjoint"
+Warning--I didn't find a database entry for "yang2021cross"
+Warning--I didn't find a database entry for "wang2021multi"
+Warning--I didn't find a database entry for "zhou2024gtnetgraphtransformernetwork"
 Warning--I didn't find a database entry for "schneider2010new"
 You've used 20 entries,
             2773 wiz_defined-function locations,
-            697 strings with 9148 characters,
+            712 strings with 9429 characters,
 and the built_in function-call counts, 13143 in all, are:
 = -- 1151
 > -- 899
@@ -47,4 +60,4 @@ warning$ -- 0
 while$ -- 101
 width$ -- 0
 write$ -- 265
-(There was 1 warning)
+(There were 14 warnings)
