@@ -568,7 +568,7 @@ if __name__ == "__main__":
     URBAN_AREAS_SHP_PATH = r"utils/urban_areas/urban_areas_full.shp"
     urban_areas = gpd.read_file(URBAN_AREAS_SHP_PATH)
 
-    max_failed_attempts = 50
+    max_failed_attempts = 300
 
     print("Starting dataset generation...")
     print(f"Target: {args.num_images} images per region")

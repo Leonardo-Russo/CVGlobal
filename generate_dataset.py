@@ -277,7 +277,7 @@ def get_streetview_metadata(lat, lon, api_key, session, stats, continent, region
     """
     Fetches Street View metadata with retry logic.
     """
-    url = f"https://maps.googleapis.com/maps/api/streetview/metadata?location={lat},{lon}&key={api_key}"
+    url = f"https://maps.googleapis.com/maps/api/streetview/metadata?location={lat},{lon}&radius=50&key={api_key}"
     
     for attempt in range(max_retries):
         try:
@@ -320,42 +320,52 @@ def is_likely_outdoor(metadata, gmaps, debug=False):
             print(f"    Debug: Metadata status not OK: {metadata.get('status')}")
         return False
 
-    # If there's no place_id, assume it's outdoor (street level)
-    if "place_id" not in metadata:
-        if debug:
-            print("    Debug: No place_id found, assuming outdoor")
-        return True
+    # # If there's no place_id, assume it's outdoor (street level)
+    # if "place_id" not in metadata:
+    #     if debug:
+    #         print("    Debug: No place_id found, assuming outdoor")
+    #     return True
 
-    try:
-        place_details = gmaps.place(metadata["place_id"])
-        if 'result' in place_details and 'types' in place_details['result']:
-            place_types = place_details['result']['types']
-            if debug:
-                print(f"    Debug: Place types: {place_types}")
+    # try:
+    #     place_details = gmaps.place(metadata["place_id"])
+    #     if 'result' in place_details and 'types' in place_details['result']:
+    #         place_types = place_details['result']['types']
+    #         if debug:
+    #             print(f"    Debug: Place types: {place_types}")
             
-            # More specific indoor indicators
-            indoor_types = [
-                'shopping_mall', 'store', 'restaurant', 'hospital', 
-                'school', 'university', 'library', 'museum',
-                'airport', 'subway_station', 'train_station',
-                'parking', 'gas_station'
-            ]
+    #         # More specific indoor indicators
+    #         indoor_types = [
+    #             'shopping_mall', 'store', 'restaurant', 'hospital', 
+    #             'school', 'university', 'library', 'museum',
+    #             'airport', 'subway_station', 'train_station',
+    #             'parking', 'gas_station'
+    #         ]
             
-            if any(t in indoor_types for t in place_types):
-                if debug:
-                    print(f"    Debug: Found indoor type, rejecting")
-                return False
+    #         if any(t in indoor_types for t in place_types):
+    #             if debug:
+    #                 print(f"    Debug: Found indoor type, rejecting")
+    #             return False
                 
-            # If it's just a general establishment or point_of_interest 
-            # but not specifically indoor, keep it
-            if debug:
-                print("    Debug: General establishment but not specifically indoor, keeping")
+    #         # If it's just a general establishment or point_of_interest 
+    #         # but not specifically indoor, keep it
+    #         if debug:
+    #             print("    Debug: General establishment but not specifically indoor, keeping")
                 
-    except Exception as e:
-        if debug:
-            print(f"    Debug: API error getting place details: {e}")
-        # If we can't determine, assume outdoor to be safe
-        pass
+    # except Exception as e:
+    #     if debug:
+    #         print(f"    Debug: API error getting place details: {e}")
+    #     # If we can't determine, assume outdoor to be safe
+    #     pass
+
+    if "place_id" in metadata:
+        try:
+            place_details = gmaps.place(metadata["place_id"])
+            if 'result' in place_details and 'types' in place_details['result']:
+                if any(t in place_details['result']['types'] for t in ['establishment', 'point_of_interest']):
+                    return False
+        except Exception as e:
+            print(f"An error occurred when getting place details: {e}")
+            pass
 
     return True
 
@@ -405,7 +415,7 @@ def is_coordinate_already_processed(lat, lon, output_dir):
     required_files = [
         f"{coord_prefix}_satellite.jpg",
         f"{coord_prefix}_streetview_0.jpg",
-        f"{coord_prefix}_streetview_90.jpg", 
+        f"{coord_prefix}_streetview_90.jpg",
         f"{coord_prefix}_streetview_180.jpg",
         f"{coord_prefix}_streetview_270.jpg",
         f"{coord_prefix}_streetview_stitched.jpg"
@@ -560,26 +570,49 @@ if __name__ == "__main__":
     os.makedirs(main_dir, exist_ok=True)
 
     # Broader but still strategic area selection
+    # AREAS = {
+    #     "North America": {
+    #         "urban": {"min_lat": 40.7128, "max_lat": 40.8128, "min_lon": -74.0060, "max_lon": -73.9060},
+    #         "rural": {"min_lat": 36.7783, "max_lat": 36.8783, "min_lon": -119.4179, "max_lon": -119.3179}
+    #     },
+    #     "Europe": {
+    #         "urban": {"min_lat": 48.8566, "max_lat": 48.9566, "min_lon": 2.3522, "max_lon": 2.4522},
+    #         "rural": {"min_lat": 46.2276, "max_lat": 46.3276, "min_lon": 2.2137, "max_lon": 2.3137}
+    #     },
+    #     "Asia": {
+    #         "urban": {"min_lat": 35.6895, "max_lat": 35.7895, "min_lon": 139.6917, "max_lon": 139.7917},
+    #         "rural": {"min_lat": 27.1751, "max_lat": 27.2751, "min_lon": 78.0421, "max_lon": 78.1421}
+    #     },
+    #     "South America": {
+    #         "urban": {"min_lat": -23.5505, "max_lat": -23.4505, "min_lon": -46.6333, "max_lon": -46.5333},
+    #         "rural": {"min_lat": -23.3000, "max_lat": -23.2000, "min_lon": -46.8000, "max_lon": -46.7000}
+    #     },
+    #     "Africa": {
+    #         "urban": {"min_lat": -1.2921, "max_lat": -1.1921, "min_lon": 36.8219, "max_lon": 36.9219},
+    #         "rural": {"min_lat": -3.3000, "max_lat": -3.2000, "min_lon": 36.7000, "max_lon": 36.8000}
+    #     }
+    # }
+
     AREAS = {
         "North America": {
-            "urban": {"min_lat": 40.7128, "max_lat": 40.8128, "min_lon": -74.0060, "max_lon": -73.9060},
-            "rural": {"min_lat": 36.7783, "max_lat": 36.8783, "min_lon": -119.4179, "max_lon": -119.3179}
+            "urban": {"min_lat": 40.7128, "max_lat": 40.8128, "min_lon": -74.0060, "max_lon": -73.9060},  # NYC
+            "rural": {"min_lat": 36.7783, "max_lat": 36.8783, "min_lon": -119.4179, "max_lon": -119.3179}  # California farmland
         },
         "Europe": {
-            "urban": {"min_lat": 48.8566, "max_lat": 48.9566, "min_lon": 2.3522, "max_lon": 2.4522},
-            "rural": {"min_lat": 46.2276, "max_lat": 46.3276, "min_lon": 2.2137, "max_lon": 2.3137}
+            "urban": {"min_lat": 48.8566, "max_lat": 48.9566, "min_lon": 2.3522, "max_lon": 2.4522},  # Paris
+            "rural": {"min_lat": 46.2276, "max_lat": 46.3276, "min_lon": 2.2137, "max_lon": 2.3137}  # French countryside
         },
         "Asia": {
-            "urban": {"min_lat": 35.6895, "max_lat": 35.7895, "min_lon": 139.6917, "max_lon": 139.7917},
-            "rural": {"min_lat": 27.1751, "max_lat": 27.2751, "min_lon": 78.0421, "max_lon": 78.1421}
+            "urban": {"min_lat": 35.6895, "max_lat": 35.7895, "min_lon": 139.6917, "max_lon": 139.7917},  # Tokyo
+            "rural": {"min_lat": 27.1751, "max_lat": 27.2751, "min_lon": 78.0421, "max_lon": 78.1421}  # Rural India (Agra region)
         },
         "South America": {
-            "urban": {"min_lat": -23.5505, "max_lat": -23.4505, "min_lon": -46.6333, "max_lon": -46.5333},
-            "rural": {"min_lat": -23.3000, "max_lat": -23.2000, "min_lon": -46.8000, "max_lon": -46.7000}
+            "urban": {"min_lat": -23.5505, "max_lat": -23.4505, "min_lon": -46.6333, "max_lon": -46.5333},  # São Paulo
+            "rural": {"min_lat": -14.2350, "max_lat": -14.1350, "min_lon": -51.9253, "max_lon": -51.8253}  # Brazilian rainforest
         },
         "Africa": {
-            "urban": {"min_lat": -1.2921, "max_lat": -1.1921, "min_lon": 36.8219, "max_lon": 36.9219},
-            "rural": {"min_lat": -3.3000, "max_lat": -3.2000, "min_lon": 36.7000, "max_lon": 36.8000}
+            "urban": {"min_lat": -1.2921, "max_lat": -1.1921, "min_lon": 36.8219, "max_lon": 36.9219},  # Nairobi
+            "rural": {"min_lat": -2.1540, "max_lat": -2.0540, "min_lon": 37.3088, "max_lon": 37.4088}  # Kenyan savanna 
         }
     }
 

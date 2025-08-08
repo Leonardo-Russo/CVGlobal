@@ -44,15 +44,13 @@ Africa & Urban & Nairobi & 1.29°--1.19°S & 36.82°--36.92°E \\
 % add the image
 \begin{figure}[t]
     \centering
-    \includegraphics[width=0.8\textwidth]{.././paper/images/sampling_regions_map.png}
+    \includegraphics[width=0.9\textwidth]{images/sampling_regions_map.png}
     \caption{Global distribution of CVGlobal dataset sampling regions across five continents, showing urban (red) and rural (teal) areas with numbered locations corresponding to Table~\ref{tab:sampling_regions}.}
     \label{fig:sampling_regions}
 \end{figure}
 
 \subsection{Data Acquisition Pipeline}
 
-Our data acquisition pipeline ensures high-quality multi-modal data collection through systematic coordinate generation, validation, and image retrieval. For each sampling region, we generate random coordinates and validate them for Street View availability and outdoor environments using Google Places API filtering to exclude indoor locations such as shopping malls and restaurants.
+Our data acquisition pipeline ensures high-quality multi-modal data collection through random coordinate collection. For each sampling region, we generate random coordinates and validate them for Street View availability and outdoor environments using Google Places API filtering to exclude indoor locations such as shopping malls and restaurants.
 
-For each validated coordinate, we acquire satellite imagery (640×640 pixels at zoom level 18) and street-view images from four cardinal directions (0°, 90°, 180°, 270°). The directional images are concatenated to create panoramic representations. Our pipeline implements robust error handling with exponential backoff retry strategies and supports resumption capabilities for interrupted data collection sessions.
-
-The resulting CVGlobal dataset provides balanced, geographically diverse paired satellite and street-view imagery suitable for training and evaluating cross-view methods across varied global contexts.
+For each validated coordinate, we acquire satellite imagery (640×640 pixels at zoom level 18) and street-view images from four cardinal directions (0°, 90°, 180°, 270°). The directional images are concatenated to create panoramic representations.

@@ -80,11 +80,7 @@ def create_sampling_regions_map(areas, output_path="sampling_regions_map.pdf", f
         'rural': '#00CC99'      # Bright teal for rural
     }
     
-    # Create numbered legend entries
-    legend_entries = []
-    region_counter = 1
-    
-    # Plot sampling regions with numbers
+    # Plot sampling regions as outlined boxes only
     for continent, regions in areas.items():
         for region_type, bounds in regions.items():
             # Extract coordinates
@@ -97,61 +93,26 @@ def create_sampling_regions_map(areas, output_path="sampling_regions_map.pdf", f
             width = max_lon - min_lon
             height = max_lat - min_lat
             
-            # Draw rectangle with thick border for visibility
+            # Draw rectangle with no fill, just colored outline
             rect = Rectangle(
                 (min_lon, min_lat), width, height,
-                facecolor=colors[region_type],
-                edgecolor='white',
-                linewidth=3,
-                alpha=0.9
-            )
-            ax.add_patch(rect)
-            
-            # Add black outline for better contrast
-            rect_outline = Rectangle(
-                (min_lon, min_lat), width, height,
                 facecolor='none',
-                edgecolor='black',
-                linewidth=1.5,
+                edgecolor=colors[region_type],
+                linewidth=4,
                 alpha=1.0
             )
-            ax.add_patch(rect_outline)
-            
-            # Add number label in the center of the rectangle
-            center_lat = (min_lat + max_lat) / 2
-            center_lon = (min_lon + max_lon) / 2
-            
-            ax.annotate(
-                str(region_counter),
-                xy=(center_lon, center_lat),
-                ha='center', va='center',
-                fontsize=14,
-                fontweight='bold',
-                color='white',
-                bbox=dict(boxstyle="circle,pad=0.3", facecolor='black', alpha=0.8, edgecolor='white')
-            )
-            
-            # Add to legend
-            legend_entries.append(f"{region_counter}. {continent} ({region_type})")
-            region_counter += 1
+            ax.add_patch(rect)
     
-    # Create comprehensive legend
+    # Create simple legend with only region types
     urban_patch = patches.Patch(color=colors['urban'], label='Urban Regions')
     rural_patch = patches.Patch(color=colors['rural'], label='Rural Regions')
     
-    # Create legend with region types
+    # Create legend with region types only
     type_legend = ax.legend(handles=[urban_patch, rural_patch], 
                            loc='upper left', fontsize=12, 
                            facecolor='white', edgecolor='black', framealpha=0.95,
                            title='Region Types', title_fontsize=13)
     type_legend.get_frame().set_linewidth(1.5)
-    
-    # Add numbered regions legend as text box
-    legend_text = "Sampling Regions:\n" + "\n".join(legend_entries)
-    ax.text(0.02, 0.02, legend_text, transform=ax.transAxes, fontsize=10,
-            verticalalignment='bottom', horizontalalignment='left',
-            bbox=dict(boxstyle="round,pad=0.5", facecolor='white', alpha=0.95, edgecolor='black'),
-            family='monospace')
     
     # Add subtle gridlines
     ax.grid(True, alpha=0.2, linestyle='--', color='white', linewidth=0.5)
@@ -182,12 +143,10 @@ def create_sampling_regions_map(areas, output_path="sampling_regions_map.pdf", f
     
     # Adjust layout and save
     plt.tight_layout()
-    # plt.savefig(output_path, dpi=300, bbox_inches='tight', 
-    #             facecolor='white', edgecolor='none')
     plt.savefig(output_path.replace('.pdf', '.png'), dpi=300, bbox_inches='tight',
                 facecolor='white', edgecolor='none')
     
-    print(f"Map saved as {output_path} and {output_path.replace('.pdf', '.png')}")
+    print(f"Map saved as {output_path.replace('.pdf', '.png')}")
     
     return fig, ax
 
@@ -220,6 +179,7 @@ def create_detailed_sampling_map(areas, output_path="detailed_sampling_map.pdf",
     earth_img = None
     try:
         earth_img = imread(background_image)
+        img_height, img_width = earth_img.shape[:2]
     except FileNotFoundError:
         print(f"Warning: Background image '{background_image}' not found.")
     
@@ -231,9 +191,47 @@ def create_detailed_sampling_map(areas, output_path="detailed_sampling_map.pdf",
         ax.set_xlim(bounds['lon'])
         ax.set_ylim(bounds['lat'])
         
+        # Calculate aspect ratio to maintain proper Earth map scaling
+        lat_range = bounds['lat'][1] - bounds['lat'][0]
+        lon_range = bounds['lon'][1] - bounds['lon'][0]
+        
+        # Calculate the aspect ratio based on latitude (Mercator-like projection)
+        center_lat = (bounds['lat'][0] + bounds['lat'][1]) / 2
+        lat_correction = np.cos(np.radians(center_lat))
+        aspect_ratio = (lat_range) / (lon_range * lat_correction)
+        
+        # Set aspect ratio to maintain proper scaling
+        ax.set_aspect(aspect_ratio)
+        
         # Add cropped Earth background if available
         if earth_img is not None:
-            ax.imshow(earth_img, extent=[-180, 180, -90, 90], aspect='auto', alpha=0.8)
+            # Calculate pixel coordinates for cropping
+            # Assuming Earth image spans -180 to 180 longitude and -90 to 90 latitude
+            lon_min, lon_max = bounds['lon']
+            lat_min, lat_max = bounds['lat']
+            
+            # Convert geographical coordinates to image pixel coordinates
+            # Longitude: -180 to 180 maps to 0 to img_width
+            x_min = int((lon_min + 180) / 360 * img_width)
+            x_max = int((lon_max + 180) / 360 * img_width)
+            
+            # Latitude: 90 to -90 maps to 0 to img_height (note the flip)
+            y_min = int((90 - lat_max) / 180 * img_height)
+            y_max = int((90 - lat_min) / 180 * img_height)
+            
+            # Ensure bounds are within image dimensions
+            x_min = max(0, min(x_min, img_width - 1))
+            x_max = max(0, min(x_max, img_width - 1))
+            y_min = max(0, min(y_min, img_height - 1))
+            y_max = max(0, min(y_max, img_height - 1))
+            
+            # Crop the image
+            if x_max > x_min and y_max > y_min:
+                cropped_img = earth_img[y_min:y_max, x_min:x_max]
+                
+                # Display the cropped image with correct geographical extent
+                ax.imshow(cropped_img, extent=[lon_min, lon_max, lat_min, lat_max], 
+                         aspect='auto', alpha=0.8)
         
         # Plot regions for this continent
         for region_type, region_bounds in regions.items():
@@ -283,9 +281,6 @@ def create_detailed_sampling_map(areas, output_path="detailed_sampling_map.pdf",
         ax.tick_params(axis='both', labelsize=9, colors='black')
         
         # Add continent-specific grid lines
-        lat_range = bounds['lat'][1] - bounds['lat'][0]
-        lon_range = bounds['lon'][1] - bounds['lon'][0]
-        
         lat_step = 10 if lat_range > 30 else 5
         lon_step = 20 if lon_range > 60 else 10
         
@@ -321,10 +316,9 @@ def create_detailed_sampling_map(areas, output_path="detailed_sampling_map.pdf",
                  fontsize=18, fontweight='bold', y=0.95)
     plt.tight_layout()
     plt.subplots_adjust(top=0.9)  # Make room for suptitle
-    # plt.savefig(output_path, dpi=300, bbox_inches='tight')
     plt.savefig(output_path.replace('.pdf', '.png'), dpi=300, bbox_inches='tight')
     
-    print(f"Detailed map saved as {output_path} and {output_path.replace('.pdf', '.png')}")
+    print(f"Detailed map saved as {output_path.replace('.pdf', '.png')}")
     
     return fig, axes
 
