@@ -11,45 +11,45 @@ Warning--I didn't find a database entry for "shi2019optimalfeaturetransportcross
 Warning--I didn't find a database entry for "shi2020ilookingatjoint"
 Warning--I didn't find a database entry for "yang2021cross"
 Warning--I didn't find a database entry for "wang2021multi"
-You've used 12 entries,
+You've used 9 entries,
             2773 wiz_defined-function locations,
-            665 strings with 7767 characters,
-and the built_in function-call counts, 7783 in all, are:
-= -- 666
-> -- 587
-< -- 9
-+ -- 198
-- -- 186
-* -- 637
-:= -- 1170
-add.period$ -- 38
-call.type$ -- 12
-change.case$ -- 95
-chr.to.int$ -- 12
-cite$ -- 24
-duplicate$ -- 321
-empty$ -- 537
-format.name$ -- 200
-if$ -- 1649
+            648 strings with 7325 characters,
+and the built_in function-call counts, 6619 in all, are:
+= -- 570
+> -- 510
+< -- 7
++ -- 171
+- -- 162
+* -- 555
+:= -- 981
+add.period$ -- 28
+call.type$ -- 9
+change.case$ -- 78
+chr.to.int$ -- 9
+cite$ -- 18
+duplicate$ -- 267
+empty$ -- 444
+format.name$ -- 173
+if$ -- 1411
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 11
-newline$ -- 69
-num.names$ -- 48
-pop$ -- 212
+missing$ -- 9
+newline$ -- 53
+num.names$ -- 36
+pop$ -- 173
 preamble$ -- 1
-purify$ -- 83
+purify$ -- 69
 quote$ -- 0
-skip$ -- 295
+skip$ -- 252
 stack$ -- 0
-substring$ -- 285
-swap$ -- 81
+substring$ -- 279
+swap$ -- 77
 text.length$ -- 6
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 132
+type$ -- 99
 warning$ -- 0
-while$ -- 56
+while$ -- 47
 width$ -- 0
-write$ -- 161
+write$ -- 123
 (There were 6 warnings)

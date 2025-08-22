@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.7.23)  7 AUG 2025 15:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.7.23)  13 AUG 2025 21:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -528,73 +528,109 @@ Package hyperref Warning: Ignoring empty anchor on input line 35.
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 35.
 (C:\Users\russ_le\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-) BMVC cite {Authors} 2006{C:/Users/russ_le/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc} BMVC cite {Mermin} 1989
+)
 
-[1
+[1{C:/Users/russ_le/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}
 
 ] BMVC cite {Workman, Souvenir, and Jacobs} 2015
 
-Package natbib Warning: Citation `workman2015learning' on page 2 undefined on input line 82.
+Package natbib Warning: Citation `workman2015learning' on page 2 undefined on input line 70.
 
 BMVC cite {Workman, Souvenir, and Jacobs} 2015 BMVC cite {Zhu, Yang, and Chen} 2021 BMVC cite {Hu, Feng, Nguyen, and Lee} 2018
 
-Package natbib Warning: Citation `NEURIPS2019_ba2f0015' on page 2 undefined on input line 84.
+Package natbib Warning: Citation `NEURIPS2019_ba2f0015' on page 2 undefined on input line 72.
 
 
-Package natbib Warning: Citation `shi2019optimalfeaturetransportcrossview' on page 2 undefined on input line 84.
+Package natbib Warning: Citation `shi2019optimalfeaturetransportcrossview' on page 2 undefined on input line 72.
 
 BMVC cite {Regmi and Borji} 2018
 
-Package natbib Warning: Citation `shi2020ilookingatjoint' on page 2 undefined on input line 86.
+Package natbib Warning: Citation `shi2020ilookingatjoint' on page 2 undefined on input line 74.
 
 BMVC cite {Dosovitskiy, Beyer, Kolesnikov, Weissenborn, Zhai, Unterthiner, Dehghani, Minderer, Heigold, Gelly, et~al.} 2021
 
-Package natbib Warning: Citation `yang2021cross' on page 2 undefined on input line 90.
+Package natbib Warning: Citation `yang2021cross' on page 2 undefined on input line 76.
 
 
-Package natbib Warning: Citation `wang2021multi' on page 2 undefined on input line 90.
+Package natbib Warning: Citation `wang2021multi' on page 2 undefined on input line 76.
 
 
 
-[2] BMVC cite {He, Fan, Wu, Xie, and Girshick} 2020 BMVC cite {Chen, Kornblith, Norouzi, and Hinton} 2020 BMVC cite {Grill, Strub, Altch{é}, Tallec, Richemond, Buchatskaya, Doersch, Avila~Pires, Guo, Gheshlaghi~Azar, et~al.} 2020 BMVC cite {Oquab, Darcet, Moutakanni, Vo, Szafraniec, Khalidov, Fernandez, Haziza, Massa, El-Nouby, et~al.} 2023 BMVC cite {Workman, Souvenir, and Jacobs} 2015 BMVC cite {Yang, Kang, Huang, Xu, Feng, and Zhao} 2024
+[2] BMVC cite {He, Fan, Wu, Xie, and Girshick} 2020 BMVC cite {Chen, Kornblith, Norouzi, and Hinton} 2020 BMVC cite {Grill, Strub, Altch{é}, Tallec, Richemond, Buchatskaya, Doersch, Avila~Pires, Guo, Gheshlaghi~Azar, et~al.} 2020 BMVC cite {Oquab, Darcet, Moutakanni, Vo, Szafraniec, Khalidov, Fernandez, Haziza, Massa, El-Nouby, et~al.} 2023
 
 [3]
-Overfull \hbox (1.82732pt too wide) in paragraph at lines 127--147
+Overfull \hbox (1.82732pt too wide) in paragraph at lines 113--133
  [][] 
  []
 
-<images/sampling_regions_map.png, id=71, 1003.1076pt x 570.4512pt>
+<images/sampling_regions_map.png, id=59, 1003.1076pt x 570.4512pt>
 File: images/sampling_regions_map.png Graphic file (type png)
 <use images/sampling_regions_map.png>
-Package pdftex.def Info: images/sampling_regions_map.png  used on input line 152.
+Package pdftex.def Info: images/sampling_regions_map.png  used on input line 138.
 (pdftex.def)             Requested size: 330.58655pt x 187.99704pt.
+<images/tokenized_depth_visualization.png, id=63, 1120.6668pt x 571.8966pt>
+File: images/tokenized_depth_visualization.png Graphic file (type png)
+<use images/tokenized_depth_visualization.png>
+Package pdftex.def Info: images/tokenized_depth_visualization.png  used on input line 154.
+(pdftex.def)             Requested size: 330.58655pt x 168.69931pt.
 
 
 [4
 pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.167 
-      ]
+l.165 \subsection
+                 {Feature Extraction}]
 
 [5
 pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.172 \newpage
-               <./images/sampling_regions_map.png>]
+l.188 
+       <./images/sampling_regions_map.png>]
 
-[6]
+[6
+pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.213 \end{align}
+                  <./images/tokenized_depth_visualization.png>]
+<images/rainbow_directions.png, id=98, 1004.553pt x 286.4301pt>
+File: images/rainbow_directions.png Graphic file (type png)
+<use images/rainbow_directions.png>
+Package pdftex.def Info: images/rainbow_directions.png  used on input line 231.
+(pdftex.def)             Requested size: 330.58655pt x 94.25998pt.
 
-[7]
 
-[8] (bmvc_final.bbl
-LaTeX Font Info:    Trying to load font information for T1+pcr on input line 11.
- (C:\Users\russ_le\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1pcr.fd
-File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
-)
+[7
+pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.240 \end{align}
+                  <./images/rainbow_directions.png>]
+<images/grid_4x4.png, id=114, 847.4862pt x 859.0494pt>
+File: images/grid_4x4.png Graphic file (type png)
+<use images/grid_4x4.png>
+Package pdftex.def Info: images/grid_4x4.png  used on input line 282.
+(pdftex.def)             Requested size: 330.58655pt x 335.09344pt.
 
-[9])
+Underfull \vbox (badness 2469) has occurred while \output is active []
+
+
+
+[8
+pdfTeX warning (ext4): destination with the same identifier (name{table.2}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.286 
+      ]
+
+[9
+pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.296 F
+       uture work includes integrating light supervision to bridge the zero-... <./images/grid_4x4.png>] (bmvc_final.bbl)
 
 Package natbib Warning: There were undefined citations.
 
@@ -607,17 +643,17 @@ L3 programming layer <2025-07-11>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 11938 strings out of 468149
- 184884 string characters out of 5430114
- 603132 words of memory out of 5000000
- 40243 multiletter control sequences out of 15000+600000
- 708452 words of font info for 156 fonts, out of 8000000 for 9000
+ 11913 strings out of 468149
+ 184931 string characters out of 5430114
+ 599720 words of memory out of 5000000
+ 40235 multiletter control sequences out of 15000+600000
+ 704362 words of font info for 150 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,16n,93p,701b,606s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/urw/symbol/usyr.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/urw/symbol/usyr.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on bmvc_final.pdf (10 pages, 6471876 bytes).
+ 90i,16n,93p,887b,519s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/urw/symbol/usyr.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/urw/symbol/usyr.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/russ_le/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
+Output written on bmvc_final.pdf (10 pages, 14937379 bytes).
 PDF statistics:
- 232 PDF objects out of 1000 (max. 8388607)
- 66 named destinations out of 1000 (max. 500000)
- 90 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 214 PDF objects out of 1000 (max. 8388607)
+ 56 named destinations out of 1000 (max. 500000)
+ 81 words of extra memory for PDF output out of 10000 (max. 10000000)
 

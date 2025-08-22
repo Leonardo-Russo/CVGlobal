@@ -3,8 +3,6 @@
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
 \bibstyle{plainnat}
-\citation{Authors06}
-\citation{Mermin89}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
 \newlabel{sec:intro}{{1}{1}{Introduction}{section.1}{}}
 \citation{workman2015predicting}
@@ -22,48 +20,46 @@
 \@writefile{toc}{\contentsline {section}{\numberline {2}Related Works}{2}{section.2}\protected@file@percent }
 \newlabel{sec:related_works}{{2}{2}{Related Works}{section.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Cross-View Geo-localization and Orientation Estimation}{2}{subsection.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Vision Transformers and Self-Supervised Learning}{2}{subsection.2.2}\protected@file@percent }
 \citation{he2020momentum}
 \citation{chen2020simple}
 \citation{grill2020bootstrap}
 \citation{oquab2023dinov2}
-\citation{workman2015predicting}
-\citation{yang2024depth}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Multi-Modal Integration and Dataset Limitations}{3}{subsection.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Cross-Modality Datasets}{3}{subsection.2.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {3}Dataset Generation Method}{3}{section.3}\protected@file@percent }
 \newlabel{sec:dataset_generation}{{3}{3}{Dataset Generation Method}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Dataset Design and Sampling Strategy}{3}{subsection.3.1}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Geographical sampling regions defined for each continent and environment type.}}{4}{table.1}\protected@file@percent }
 \newlabel{tab:sampling_regions}{{1}{4}{Geographical sampling regions defined for each continent and environment type}{table.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Dataset Design and Sampling Strategy}{4}{subsection.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Data Acquisition Pipeline}{4}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Data Acquisition Details}{4}{subsection.3.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {4}Crossview Method}{4}{section.4}\protected@file@percent }
 \newlabel{sec:method}{{4}{4}{Crossview Method}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Problem Formulation}{4}{subsection.4.1}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Global distribution of CVGlobal dataset sampling regions across five continents, showing urban (red) and rural (teal) areas with numbered locations corresponding to Table~\ref {tab:sampling_regions}.}}{5}{figure.1}\protected@file@percent }
 \newlabel{fig:sampling_regions}{{1}{5}{Global distribution of CVGlobal dataset sampling regions across five continents, showing urban (red) and rural (teal) areas with numbered locations corresponding to Table~\ref {tab:sampling_regions}}{figure.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Problem Formulation}{5}{subsection.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Feature Extraction Overview}{6}{subsection.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Orientation-Aware Token Aggregation}{6}{subsection.4.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.1}Sky Filtering and Depth Estimation}{6}{subsubsection.4.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.2}Multi-Layer Depth-Weighted Token Aggregation}{6}{subsubsection.4.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Orientation Estimation}{7}{subsection.4.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.1}Cross-Modal Alignment via Cosine Distance Minimization}{7}{subsubsection.4.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.2}Confidence Estimation}{8}{subsubsection.4.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Implementation Details}{8}{subsection.4.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.5.1}Backbone-Specific Configurations}{8}{subsubsection.4.5.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.5.2}Training Strategy and Preprocessing}{8}{subsubsection.4.5.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.5.3}Pipeline Architecture}{8}{subsubsection.4.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Feature Extraction}{5}{subsection.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Sky Filtering and Depth Estimation}{5}{subsection.4.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Visualization of tokenized depth information for aerial images, highlighting the spatial distribution of depth cues across different regions.}}{6}{figure.2}\protected@file@percent }
+\newlabel{fig:method}{{2}{6}{Visualization of tokenized depth information for aerial images, highlighting the spatial distribution of depth cues across different regions}{figure.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Multi-Layer Depth-Weighted Token Aggregation}{6}{subsection.4.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Radial directions used for aerial image token aggregation, visualized as a rainbow pattern. Each color represents a distinct radial direction corresponding to the angular offset from the center of the aerial image.}}{7}{figure.3}\protected@file@percent }
+\newlabel{fig:directions}{{3}{7}{Radial directions used for aerial image token aggregation, visualized as a rainbow pattern. Each color represents a distinct radial direction corresponding to the angular offset from the center of the aerial image}{figure.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Cross-Modal Orientation Estimation}{7}{subsection.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Results}{8}{section.5}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces FOV and yaw settings for the CVUSA dataset.}}{8}{table.2}\protected@file@percent }
+\newlabel{tab:cvusa_fov_yaw}{{2}{8}{FOV and yaw settings for the CVUSA dataset}{table.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Orientation estimation errors for the CVPR subset of CVUSA dataset. Each bar represents the average error for a specific image, highlighting the effectiveness of our method in various scenarios.}}{9}{figure.4}\protected@file@percent }
+\newlabel{fig:orientation_errors}{{4}{9}{Orientation estimation errors for the CVPR subset of CVUSA dataset. Each bar represents the average error for a specific image, highlighting the effectiveness of our method in various scenarios}{figure.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusions}{9}{section.6}\protected@file@percent }
+\newlabel{sec:conclusions}{{6}{9}{Conclusions}{section.6}{}}
 \bibdata{egbib}
-\bibcite{Authors06}{{1}{2006}{{Authors}}{{}}}
-\bibcite{chen2020simple}{{2}{2020}{{Chen et~al.}}{{Chen, Kornblith, Norouzi, and Hinton}}}
-\bibcite{dosovitskiy2020image}{{3}{2021}{{Dosovitskiy et~al.}}{{Dosovitskiy, Beyer, Kolesnikov, Weissenborn, Zhai, Unterthiner, Dehghani, Minderer, Heigold, Gelly, et~al.}}}
-\bibcite{grill2020bootstrap}{{4}{2020}{{Grill et~al.}}{{Grill, Strub, Altch{\'e}, Tallec, Richemond, Buchatskaya, Doersch, Avila~Pires, Guo, Gheshlaghi~Azar, et~al.}}}
-\bibcite{he2020momentum}{{5}{2020}{{He et~al.}}{{He, Fan, Wu, Xie, and Girshick}}}
-\bibcite{hu2018cvm}{{6}{2018}{{Hu et~al.}}{{Hu, Feng, Nguyen, and Lee}}}
-\bibcite{Mermin89}{{7}{1989}{{Mermin}}{{}}}
-\bibcite{oquab2023dinov2}{{8}{2023}{{Oquab et~al.}}{{Oquab, Darcet, Moutakanni, Vo, Szafraniec, Khalidov, Fernandez, Haziza, Massa, El-Nouby, et~al.}}}
-\bibcite{regmi2018cross}{{9}{2018}{{Regmi and Borji}}{{}}}
-\bibcite{workman2015predicting}{{10}{2015}{{Workman et~al.}}{{Workman, Souvenir, and Jacobs}}}
-\bibcite{yang2024depth}{{11}{2024}{{Yang et~al.}}{{Yang, Kang, Huang, Xu, Feng, and Zhao}}}
-\bibcite{zhu2021vigor}{{12}{2021}{{Zhu et~al.}}{{Zhu, Yang, and Chen}}}
+\bibcite{chen2020simple}{{1}{2020}{{Chen et~al.}}{{Chen, Kornblith, Norouzi, and Hinton}}}
+\bibcite{dosovitskiy2020image}{{2}{2021}{{Dosovitskiy et~al.}}{{Dosovitskiy, Beyer, Kolesnikov, Weissenborn, Zhai, Unterthiner, Dehghani, Minderer, Heigold, Gelly, et~al.}}}
+\bibcite{grill2020bootstrap}{{3}{2020}{{Grill et~al.}}{{Grill, Strub, Altch{\'e}, Tallec, Richemond, Buchatskaya, Doersch, Avila~Pires, Guo, Gheshlaghi~Azar, et~al.}}}
+\bibcite{he2020momentum}{{4}{2020}{{He et~al.}}{{He, Fan, Wu, Xie, and Girshick}}}
+\bibcite{hu2018cvm}{{5}{2018}{{Hu et~al.}}{{Hu, Feng, Nguyen, and Lee}}}
+\bibcite{oquab2023dinov2}{{6}{2023}{{Oquab et~al.}}{{Oquab, Darcet, Moutakanni, Vo, Szafraniec, Khalidov, Fernandez, Haziza, Massa, El-Nouby, et~al.}}}
+\bibcite{regmi2018cross}{{7}{2018}{{Regmi and Borji}}{{}}}
+\bibcite{workman2015predicting}{{8}{2015}{{Workman et~al.}}{{Workman, Souvenir, and Jacobs}}}
+\bibcite{zhu2021vigor}{{9}{2021}{{Zhu et~al.}}{{Zhu, Yang, and Chen}}}
 \gdef \BMVA@LastPage{10}
 \gdef \@abspage@last{10}
